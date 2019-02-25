@@ -64,6 +64,7 @@ a:not(.nav):hover:after {
   position: relative;
 }
 
+
 @media (min-width: 54em) {
   #container.sidebar > section.head {
     position: fixed;
