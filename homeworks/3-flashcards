@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+ 
+
+
+<head>
+  <meta charset="utf-8">
+  <title>CS193X: Web Programming Fundamentals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/syntax.css"/>
+  <script src="https://use.fontawesome.com/c63611dac2.js"></script>
+  <script src="../js/script.js" defer="true"></script>
+</head>
+
+  <body>
+    <div id="container" class="full">
+      <section class="head">
+        <nav>
+          <ul>
+            <li>
+              <a href="../homework" class="nav">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Back
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <header>
+          
+          <h2>
+            Homework 3
+          </h2>
+          
+          <h1>Flashcards</h1>
+        </header>
+      </section>
+      <section class="main">
+        <section>
+          <article>
+  
+<p>In this homework, you will be creating a Flashcard web app that loads desks of flashcards for the user to review and score themselves. You will be practicing Object-oriented JavaScript, Mobile JavaScript and Animations.</p>
+
+<p>We are providing several stub JavaScript classes to help you finish this assignment. We are <strong>not</strong> telling you what methods / fields / etc you need to add to your classes; that is for you to decide.</p>
+
+<p>Note that we will <em>not</em> grade on having good OO design; you just need to get the app working without using global variables.</p>
+
+<p><span class="label">Due Date:</span> Mon, May 8, 2017 at 11:59pm <em>(late cutoff: Wed, May 10, 2017 at 11:59pm)</em><br />
+<span class="label">HW3 Turn-in:</span> <a href="https://goo.gl/forms/mijI69Hxz3Fh2NQY2">Submission Form</a></p>
+
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#getting-started" id="markdown-toc-getting-started">1. Getting started</a></li>
+  <li><a href="#understanding-the-starter-code" id="markdown-toc-understanding-the-starter-code">2. Understanding the starter code</a></li>
+  <li><a href="#implementation-menu-screen" id="markdown-toc-implementation-menu-screen">3. Implementation: Menu screen</a></li>
+  <li><a href="#implementation-flashcard-screen-and-flashcard-behavior" id="markdown-toc-implementation-flashcard-screen-and-flashcard-behavior">4. Implementation: Flashcard screen and flashcard behavior</a></li>
+  <li><a href="#implementation-results-screen" id="markdown-toc-implementation-results-screen">5. Implementation: Results screen</a></li>
+  <li><a href="#style-requirements" id="markdown-toc-style-requirements">Style requirements</a></li>
+  <li><a href="#submit" id="markdown-toc-submit">Submit</a></li>
+</ul>
+
+<section class="part">
+  <h2 id="getting-started">1. Getting started</h2>
+
+  <h3 class="no_toc" id="accept-the-hw3-assignment">1. Accept the HW3 assignment</h3>
+
+  <ul>
+    <li><a href="https://classroom.github.com/assignment-invitations/2c281cf02c0dc163e54706ffa56f22b5">Follow this link</a>, where HW3 is stored on GitHub Classroom.</li>
+    <li>Accept the homework and download the starter code as you did in <a href="../homework/0-welcome">Homework 0</a>.</li>
+  </ul>
+
+  <h3 class="no_toc" id="overall-behavior">2. Overall behavior</h3>
+
+  <p>You will be implementing a simple Flashcard web app that loads flashcard desks defined in <code class="highlighter-rouge">constants.js</code>.</p>
+
+  <ul>
+    <li>The user clicks or taps the flashcard to toggle between the word and definition.</li>
+    <li>If the user got the flashcard <strong>correct</strong>:
+      <ul>
+        <li>The user drags and releases it to the <strong>right side</strong> of the screen.</li>
+      </ul>
+    </li>
+    <li>If the user got the flashcard <strong>wrong</strong>:
+      <ul>
+        <li>The user drags and releases it to the <strong>left side</strong> of the screen.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Watch the videos below to see the behavior of a completed Flashcard app in desktop and mobile views:</p>
+
+  <p><strong>Desktop:</strong></p>
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISundnpsMnZ1RWJ5Ums/preview" width="640" height="360"></iframe>
+
+  <p><strong>Mobile:</strong></p>
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISunakpvbE8xTmllU00/preview" width="640" height="360"></iframe>
+
+</section>
+
+<section class="part">
+  <h2 id="understanding-the-starter-code">2. Understanding the starter code</h2>
+
+  <p>We have provided several starter code files to help you write this flashcard app. This section provides more information about the starter code and how to get started with it.</p>
+
+  <p><strong>You will need to understand and modify all of the JavaScript starter files that we give you to complete this assignment.</strong></p>
+
+  <p>We have also provided almost all of the CSS of this app. Unlike the JavaScript files, you should not have to modify <code class="highlighter-rouge">style.css</code>. The only CSS you should be adding is for animations and dragging effects, which you can add in <code class="highlighter-rouge">flashcard-style.css</code>.</p>
+
+  <h3 class="no_toc" id="starter-code-description">1. Starter code description</h3>
+
+  <p>Below is a brief description of all the files provided via starter code:</p>
+
+  <ul>
+    <li><code class="highlighter-rouge">main.js</code>: This is the script that starts off your app. It begins by creating an <code class="highlighter-rouge">App</code> object.</li>
+    <li><code class="highlighter-rouge">app.js</code>: The <code class="highlighter-rouge">App</code> object encapsulates the entire state of the application. It creates three objects representing the three “screens” of the app:
+      <ul>
+        <li><code class="highlighter-rouge">menu-screen.js</code>: The <code class="highlighter-rouge">MenuScreen</code> object represents the menu screen of the application. From here, you can choose a flashcard deck to review.</li>
+        <li><code class="highlighter-rouge">flashcard-screen.js</code>: The <code class="highlighter-rouge">FlashcardScreen</code> represents the main screen of the application, where you see and answer the flashcards from the deck you’ve selected.
+          <ul>
+            <li><code class="highlighter-rouge">flashcard.js</code>: The <code class="highlighter-rouge">Flashcard</code> object represents one flashcard. You can click on it to flip between the front and the back of the card.</li>
+          </ul>
+        </li>
+        <li><code class="highlighter-rouge">results-screen.js</code>: The <code class="highlighter-rouge">ResultsScreen</code> object represents the results screen that appears after you’ve finished a flashcard deck. It gives you the options to continue with the cards you’ve gotten wrong or to go back to the menu.</li>
+      </ul>
+    </li>
+    <li><code class="highlighter-rouge">constants.js</code>: This includes the <code class="highlighter-rouge">FLASHCARD_DECKS</code> global variable, which is an array of objects that represent a single flashcard deck. <strong>We aren’t expecting you to need to modify this file</strong>.</li>
+  </ul>
+
+  <p><strong>Note:</strong> We generally expect you to use and modify the provided classes to complete the assignment. However, if you feel strongly that you want to complete the assignment in a different way, e.g. you don’t want to use the <code class="highlighter-rouge">MenuScreen</code> object for some reason, you are free to delete any of the given starter code in favor of a class structure of your choosing.</p>
+
+  <ul>
+    <li>
+      <p><code class="highlighter-rouge">index.html</code>: Contains the HTML markup for all 3 screens of the flashcard app, contained in the following <code class="highlighter-rouge">div</code>s: <code class="highlighter-rouge">#menu</code>, <code class="highlighter-rouge">#main</code>, and <code class="highlighter-rouge">#results</code>. <strong>We aren’t expecting you to need to modify this file</strong>, though you can if you’d like.</p>
+    </li>
+    <li><code class="highlighter-rouge">style.css</code>: Contains the style rules for all screens and the flashcards. <strong>We aren’t expecting you to need to modify this file</strong>.</li>
+    <li><code class="highlighter-rouge">flashcard-style.css</code>: An empty CSS file for you to add any additional CSS rules you need to complete the assignment. You should only need to add CSS for animations and dragging effects.</li>
+  </ul>
+
+  <h3 class="no_toc" id="toggle-between-the-screens">2. Toggle between the screens</h3>
+
+  <p>Every screen object contains a <code class="highlighter-rouge">show()</code> and a <code class="highlighter-rouge">hide()</code> method. Complete the following steps to see what we’ve provided.</p>
+
+  <p><strong>Menu screen</strong></p>
+  <ul>
+    <li>Open <code class="highlighter-rouge">index.html</code> in a browser. It should look like the following:
+<img src="images/hw3-initial-menu-screen.png" class="screenshot" /></li>
+  </ul>
+
+  <p>As you can see, the menu screen is not complete. You will need to write the JavaScript necessary to implement the menu as explained the later sections.</p>
+
+  <p><strong>Main/Flashcard screen</strong></p>
+  <ul>
+    <li>In <code class="highlighter-rouge">app.js</code>, uncomment lines 21 and 22:
+      <div class="highlighter-rouge"><pre class="highlight"><code>this.menu.hide();
+this.flashcards.show();
+</code></pre>
+      </div>
+    </li>
+    <li>Refresh `index.html. It should look like the following:
+<img src="images/hw3-initial-flashcard-front.png" class="screenshot" /></li>
+    <li>Click on the card a couple times. This should make it flip from front to back:
+<img src="images/hw3-initial-flashcard-back.png" class="screenshot" /></li>
+    <li>Open <code class="highlighter-rouge">flashcard-screen.js</code>. Notice that the flashcard appears with “word” and “definition” because of the following line:
+      <div class="highlighter-rouge"><pre class="highlight"><code>const card = new Flashcard(flashcardContainer, 'word', 'definition');
+</code></pre>
+      </div>
+      <ul>
+        <li>This line of code was only included so that you can see the <code class="highlighter-rouge">Flashcard</code> implementation we’ve provided so far. Of course, you should modify or delete this line of code to complete the app.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>The flashcard screen is not complete, either. You will need to write the JavaScript necessary to implement the flashcard behavior as explained its dedicated section of the spec.</p>
+
+  <p><strong>Results screen</strong></p>
+  <ul>
+    <li>In <code class="highlighter-rouge">app.js</code>, re-comment or delete lines 21 and 22 now:
+      <div class="highlighter-rouge"><pre class="highlight"><code>// this.menu.hide();
+// this.flashcards.show();
+</code></pre>
+      </div>
+    </li>
+    <li>Uncomment lines 25 and 26:
+      <div class="highlighter-rouge"><pre class="highlight"><code>this.menu.hide();
+this.results.show();
+</code></pre>
+      </div>
+    </li>
+    <li>Refresh <code class="highlighter-rouge">index.html</code>. It should look like the following:
+<img src="images/hw3-initial-results-screen.png" class="screenshot" /></li>
+  </ul>
+
+  <p>You will have to write the JavaScript necessary to fill out the results screen and implement its behavior, as explained later in the spec.</p>
+
+</section>
+
+<section class="part">
+  <h2 id="implementation-menu-screen">3. Implementation: Menu screen</h2>
+
+  <p>This section describes the details on how the Menu screen should be implemented.</p>
+
+  <p><img src="images/hw3-menu-screen.png" class="screenshot" /></p>
+
+  <p><strong>Behavior</strong></p>
+  <ul>
+    <li>The flashcard menu items are taken from the <code class="highlighter-rouge">title</code>s in <code class="highlighter-rouge">constants.js</code>.</li>
+    <li>The menu items should appear in the order they appear in the <code class="highlighter-rouge">FLASHCARD_DECKS</code> array</li>
+    <li>When you click on a menu item, the menu screen should become hidden and the user should be taken to the Flashcard screen, loaded with the <code class="highlighter-rouge">words</code> deck associated with the selected menu item.</li>
+    <li>The menu should work even if you changed the values of <code class="highlighter-rouge">FLASHCARD_DECKS</code> (while keeping the same general data format). For example, your menu should <strong>not</strong> be hardcoded to work for only three menu items.</li>
+  </ul>
+
+  <p><strong>Style</strong></p>
+  <ul>
+    <li>All <code class="highlighter-rouge">&lt;div&gt;</code> elements appended to the <code class="highlighter-rouge">&lt;div id="choices"&gt;&lt;/div&gt;</code> will receive the correct style as defined by the provided stylesheet.</li>
+    <li>Therefore you should create each menu item using a simple <code class="highlighter-rouge">&lt;div&gt;</code> element with the title as its text content, and you should append these <code class="highlighter-rouge">&lt;div&gt;</code> elements to the <code class="highlighter-rouge">&lt;div id="choices"&gt;&lt;/div&gt;</code> container.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="implementation-flashcard-screen-and-flashcard-behavior">4. Implementation: Flashcard screen and flashcard behavior</h2>
+
+  <p>This section describes the details on how the Flashcard / Main screen should be implemented, and the behavior of the flashcards themselves.</p>
+
+  <h3 class="no_toc" id="initial-animation">Initial animation</h3>
+
+  <p>When a new card is shown, it animates in from the bottom.</p>
+
+  <video src="videos/hw3-animation.mp4" controls="" autoplay="" loop=""></video>
+  <ul>
+    <li>The animation should take around <code class="highlighter-rouge">0.5s</code>.</li>
+    <li><strong>HINTS:</strong>
+      <ul>
+        <li>You should use the <code class="highlighter-rouge">@keyframes</code> CSS animation styles we learned in class</li>
+        <li>You should apply the animation to <code class="highlighter-rouge">.flashcard-box .word</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="click-flashcard">Click flashcard</h3>
+  <p>This behavior is already implemented for you, but you may have to modify your code to keep this functionality working after you implement the drag behavior.</p>
+
+  <video src="videos/hw3-click.mp4" controls="" autoplay="" loop=""></video>
+
+  <ul>
+    <li>When you click a card, it should toggle between showing the word and the definition.
+      <ul>
+        <li>This is <strong>already implemented</strong> for you.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="drag-flashcard">Drag flashcard</h3>
+
+  <p>There are several aspects to dragging, broken down below.</p>
+
+  <p>Here are a few terms we will be using:</p>
+  <ul>
+    <li><strong>origin</strong>: The initial point where the drag begins. This is the (x, y) coordinates of the mouse (specifically the <code class="highlighter-rouge">clientX</code> and <code class="highlighter-rouge">clientY</code> values) when the user first clicks down or touches down on the flashcard to begin the drag.</li>
+    <li><strong>positive direction</strong>: This indicates “positive” direction from the <em>origin</em> as defined above, meaning e.g. (currentX - originX) &gt; 0.</li>
+    <li><strong>negative direction</strong>: This indicates “negative” direction from the <em>origin</em> as defined above, meaning e.g. (currentX - originX) &lt; 0</li>
+  </ul>
+
+  <p><strong>General drag properties</strong></p>
+  <ul>
+    <li>Dragging the flashcard should make it move along both the x- and y-axis, following the pointer as it moves around the screen.</li>
+    <li>Dragging should only occur when the user is clicking down on desktop or touching the screen on mobile. When the user releases the click or stops touching the screen, the drag should end.</li>
+    <li>The drag behavior is the same regardless of whether the word or definition side of the card is showing.</li>
+    <li><strong>Rotate</strong>
+      <ul>
+        <li>The flashcard rotates as it moves away from the origin.</li>
+        <li>The rotation is calculated by this formula, in degrees: <strong>0.2 * (distanceFromOriginX)</strong>.</li>
+        <li>This rotation is based distance from the origin in the x-direction only.</li>
+        <li>Examples:
+          <ul>
+            <li>If the user drags the card (100px, 30px) from the origin of the drag, then the rotation should be 0.2 * 100 = <code class="highlighter-rouge">20deg</code>.</li>
+            <li>If the user drags the card (100px, -25px) from origin: rotation is still <code class="highlighter-rouge">20deg</code>, since you should only calculate based on the x-value.</li>
+            <li>If the user drags the card (-50px, -30px) from origin: rotation is <code class="highlighter-rouge">-10deg</code></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>HINT</strong>
+      <ul>
+        <li>You should use the <code class="highlighter-rouge">transform</code> CSS property with the <code class="highlighter-rouge">translate</code> and <code class="highlighter-rouge">rotate</code> functions. See <a href="https://codepen.io/bee-arcade/pen/196d0c2483e15da3f2a888a199569fa6">examples</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transform?v=example">MDN</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Drag right (correct answer)</strong></p>
+  <video src="videos/hw3-drag-right.mp4" controls="" autoplay="" loop=""></video>
+  <ul>
+    <li>If the user drags the card <em>*150px or more</em> in the positive x-direction, two things should happen:
+      <ul>
+        <li>The background color of the app changes to <code class="highlighter-rouge">#97b7b7</code></li>
+        <li>The number in the status box counting how many you got “right” should increase by 1</li>
+      </ul>
+    </li>
+    <li>If the user drags the card back to the middle area (i.e. less than 150px from origin in the x-direction), then both of these changes should revert back:
+      <ul>
+        <li>The background color should go back to <code class="highlighter-rouge">#d0e6df</code></li>
+        <li>The number in the status box counting how many you got “right” return to its original value</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Drag left (incorrect answer)</strong></p>
+  <video src="videos/hw3-drag-left.mp4" controls="" autoplay="" loop=""></video>
+  <ul>
+    <li>If the user drags the card <em>*150px or more</em> in the negative x-direction, two things should happen:
+      <ul>
+        <li>The background color of the app changes to <code class="highlighter-rouge">#97b7b7</code></li>
+        <li>The number in the status box counting how many you got “wrong” should increase by 1</li>
+      </ul>
+    </li>
+    <li>If the user drags the card back to the middle area (i.e. less than 150px from origin in the x-direction), then both of these changes should revert back:
+      <ul>
+        <li>The background color should go back to <code class="highlighter-rouge">#d0e6df</code></li>
+        <li>The number in the status box counting how many you got “wrong” return to its original value</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="release-flashcard">Release flashcard</h3>
+
+  <p><strong>Release middle (no answer)</strong></p>
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISundmJ1WVJ0blA2RUk/preview" width="640" height="360"></iframe>
+  <ul>
+    <li>If the user drags the card less than 150px in the positive or negative x-direction and releases, the card should return back to its original position.</li>
+    <li>This transition should not be immediate: the card should move back to its original position in around <code class="highlighter-rouge">0.6s</code>.</li>
+  </ul>
+
+  <p><strong>Release left or right</strong></p>
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISunQjdTSjRqb0dsYm8/preview" width="640" height="360"></iframe>
+  <ul>
+    <li>If the user drags the card more than 150px in the <strong>positive</strong> x-direction and releases, this indicates that the user has gotten the answer <strong>correct</strong>:
+      <ul>
+        <li>The number in the status box counting how many you got “right” should increase by 1</li>
+        <li>The card you were dragging should immediately disappear.</li>
+        <li>The next card in the deck should animate into view, or the user should be shown the Result screen if it is the last card in the deck.</li>
+      </ul>
+    </li>
+    <li>If the user drags the card more than 150px in the <strong>negative</strong> x-direction and releases, this indicates that the user has gotten the answer <strong>wrong</strong>:
+      <ul>
+        <li>The number in the status box counting how many you got “wrong” should increase by 1</li>
+        <li>The card you were dragging should immediately disappear.</li>
+        <li>The next card in the deck should animate into view, or the user should be shown the Result screen if it is the last card in the deck.</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="implementation-results-screen">5. Implementation: Results screen</h2>
+
+  <p>This section describes the details on how the Results screen should be implemented.</p>
+
+  <h3 class="no_toc" id="stats">Stats</h3>
+
+  <p>Display the percentage correct, the number correct, and the number incorrect for this flashcard deck.</p>
+
+  <p><img src="images/hw3-results-imperfect.png" class="screenshot" /></p>
+
+  <ul>
+    <li>The <code class="highlighter-rouge">index.html</code> contains empty <code class="highlighter-rouge">span</code>s with classes <code class="highlighter-rouge">percent</code>, <code class="highlighter-rouge">correct</code>, and <code class="highlighter-rouge">incorrect</code>. Fill these in via JavaScript to get the desired output.
+      <ul>
+        <li>The stats are already styled for you via the provided CSS stylesheet so long as you fill in the correct <code class="highlighter-rouge">span</code> elements with the data.</li>
+      </ul>
+    </li>
+    <li>The percentage should be rounded to the nearest whole number.</li>
+  </ul>
+
+  <h3 class="no_toc" id="buttons">Buttons</h3>
+
+  <p>There are two buttons displayed at the end of the flashcard session. The first button is different depending on whether the user got every flashcard in the deck correct.</p>
+
+  <p><strong>Less than 100%</strong>
+<img src="images/hw3-results-imperfect.png" class="screenshot" /></p>
+  <ul>
+    <li>If the user got less than a perfect score, the first button (with a class of <code class="highlighter-rouge">continue</code>) should say “Continue”</li>
+    <li>Clicking “Continue” will then go back to the Flashcard screen, but with <strong>only the flashcards the user got wrong.</strong>
+      <ul>
+        <li>The stats at the end of every round should still be out of the <strong>total</strong> number of flashcards in the deck. For example, if the first round you got 3/5 flashcards correct, and you continue, you will get presented with the 2 cards you got incorrect. If you get those 2 cards correct, the stats will show you’ve gotten “5” cards correct, since that is the total number of cards in the deck.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Perfect score: 100%</strong>
+<img src="images/hw3-results-perfect.png" class="screenshot" /></p>
+  <ul>
+    <li>If the user got a perfect score, the first button (with a class of <code class="highlighter-rouge">continue</code>) should say “Start over?”</li>
+    <li>Clicking “Start over?” will then go back to the Flashcard screen with the same flashcard deck, starting over with 0 right and 0 wrong.</li>
+  </ul>
+
+  <p><strong>Back to menu</strong></p>
+  <ul>
+    <li>Clicking the “Back to menu” button should make the app go back to the Menu screen.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="style-requirements">Style requirements</h2>
+
+  <p><strong>You are allowed, encouraged, and required</strong> to make significant changes to the JavaScript files / code we’ve provided. You may want to or have to do things such as:</p>
+  <ul>
+    <li>Add constructor parameters</li>
+    <li>Delete lines of code we wrote in the starter code</li>
+    <li>Add your own fields and methods to the classes</li>
+    <li>Add your own class(es)</li>
+  </ul>
+
+  <p>You will not be graded on OO-design skills, so do not worry too much about having perfectly composed classes.</p>
+
+  <p>Here are some more details on what we are looking for in terms of style:</p>
+
+  <ul>
+    <li><strong>No additional global variables:</strong> For full credit, you may <strong>not</strong> add any additional global variables to the Flashcard app, other than the existing <code class="highlighter-rouge">app</code> variable defined in <code class="highlighter-rouge">main.js</code> and the <code class="highlighter-rouge">FLASHCARD_DECKS</code> in <code class="highlighter-rouge">constants.js</code>.</li>
+    <li><strong>Use ES6 classes:</strong> To complete this assignment, you do not need to know about other ways of creating objects, such as via <code class="highlighter-rouge">prototype</code>. You should practice using <code class="highlighter-rouge">class</code>es as described in lecture.</li>
+    <li><strong>OO-design:</strong> We are <strong>not</strong> going to grade on object-oriented design. We may award bonus points for particularly well-composed apps, but your main concern should be to get the functionality working.</li>
+    <li><strong>Comments, variable names, etc.:</strong> We are also <strong>not</strong> grading on general good coding style, such as having comments or using good variable names. However, we encourage you to practice good coding style for your TAs’ sake! We will only dock style points if someone’s code is so extremely difficult to read that it impedes your TA’s ability to grade your assignment.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="submit">Submit</h2>
+
+  <p>Upload your completed homework to your GitHub repository and publish them, in the same way that you did with <a href="../homework/0-welcome">Homework 0</a>.</p>
+
+  <p>Turn in the link to your GitHub repository and the link to your completed flashcard web page via this form:</p>
+  <ul>
+    <li><a href="https://goo.gl/forms/mijI69Hxz3Fh2NQY2">Submission Form</a></li>
+  </ul>
+
+</section>
+
+</article>
+
+        </section>
+       
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html>
+ 
+
+
+<head>
+  <meta charset="utf-8">
+  <title>CS193X: Web Programming Fundamentals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/syntax.css"/>
+  <script src="https://use.fontawesome.com/c63611dac2.js"></script>
+  <script src="../js/script.js" defer="true"></script>
+</head>
+
+  <body>
+    <div id="container" class="full">
+      <section class="head">
+        <nav>
+          <ul>
+            <li>
+              <a href="../homework" class="nav">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Back
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <header>
+          
+          <h2>
+            Homework 2
+          </h2>
+          
+          <h1>Quiz and Extensions</h1>
+        </header>
+      </section>
+      <section class="main">
+        <section>
+          <article>
+  
+<p>In this homework, you will be practicing the HTML, CSS, and JavaScript that we learned in lecture.</p>
+
+<p>For <strong>Part 1</strong>, you will be implementing a <a href="https://www.buzzfeed.com/">Buzzfeed</a>-style personality quiz. Unlike Homework 1, a lot of the HTML and CSS is already implemented for you, but you will still need to make some HTML and CSS modifications to complete the assignment. None of the JavaScript has been implemented for you, other than <code class="highlighter-rouge">constants.js</code> that constants the quiz result information.</p>
+
+<p>For <strong>Part 2</strong>, you will finish a partially-implemented Chrome extension. Unsurprisingly, you will need to use <a href="google.com/chrome">Chrome</a> for this part of the assignment.</p>
+
+<p><strong>Part 3</strong> is <strong>optional</strong> and can be completed for extra credit. Part 3 involves implementing a second Chrome extension.</p>
+
+<p><span class="label">Due Date:</span> Fri, Apr 28, 2017 at 11:59pm <em>(late cutoff: Sun, Apr 30, 2017 at 11:59pm)</em><br />
+<span class="label">HW2 Mini:</span> None!<br />
+<span class="label">HW2 Turn-in:</span> <a href="https://goo.gl/forms/p10BEbVMZ1ODqZn03">Submission Form</a></p>
+
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#part-0-getting-started" id="markdown-toc-part-0-getting-started">Part 0: Getting started</a></li>
+  <li><a href="#part-1-personality-quiz-indexhtml" id="markdown-toc-part-1-personality-quiz-indexhtml">Part 1: Personality quiz <code class="highlighter-rouge">index.html</code></a>    <ul>
+      <li><a href="#overall-appearance-and-behavior" id="markdown-toc-overall-appearance-and-behavior">Overall appearance and behavior</a></li>
+      <li><a href="#choice-grid" id="markdown-toc-choice-grid">1. Choice grid</a></li>
+      <li><a href="#mobile-layout" id="markdown-toc-mobile-layout">2. Mobile layout</a></li>
+      <li><a href="#quiz-behavior" id="markdown-toc-quiz-behavior">3. Quiz behavior</a></li>
+    </ul>
+  </li>
+  <li><a href="#part-2-evil-extension" id="markdown-toc-part-2-evil-extension">Part 2: Evil extension</a></li>
+  <li><a href="#part-3-optional-twitter-gardener" id="markdown-toc-part-3-optional-twitter-gardener">Part 3: OPTIONAL: Twitter gardener</a></li>
+  <li><a href="#submit" id="markdown-toc-submit">Submit</a></li>
+</ul>
+
+<section class="part">
+  <h2 id="part-0-getting-started">Part 0: Getting started</h2>
+
+  <h3 class="no_toc" id="accept-the-hw2-assignment">1. Accept the HW2 assignment</h3>
+
+  <ul>
+    <li><a href="https://classroom.github.com/assignment-invitations/a1a8f4dc63fcc6705150acb1d8c4e8c0">Follow this link</a>, where HW2 is stored on GitHub Classroom.</li>
+    <li>Accept the homework and download the starter code as you did in <a href="../homework/0-welcome">Homework 0</a>.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="part-1-personality-quiz-indexhtml">Part 1: Personality quiz <code class="highlighter-rouge">index.html</code></h2>
+
+  <p>For Part 1, you will create a personality quiz called “Adopt A Dog And We’ll Reveal A Deep Truth About You.”</p>
+
+  <p>We have completed a lot of the HTML and CSS for you already. We expect you will have to make modifications to the following files to complete the assignment:</p>
+  <ul>
+    <li><code class="highlighter-rouge">index.html</code>: Most of the HTML is written for you, but you will likely need to make some modifications for the mobile layout and the JavaScript.</li>
+    <li><code class="highlighter-rouge">style.css</code>: A lot of the CSS is already written for you in <code class="highlighter-rouge">provided-style.css</code>, but you will need to make some modifications for all parts of the assignment. Please make your CSS changes in <code class="highlighter-rouge">style.css</code> and not <code class="highlighter-rouge">provided-style.css</code>, so that the TAs have an easier time grading.</li>
+    <li><code class="highlighter-rouge">script.js</code>: Write your JavaScript here.</li>
+  </ul>
+
+  <h3 id="overall-appearance-and-behavior">Overall appearance and behavior</h3>
+
+  <p>The following video shows the look and behavior of the quiz we are asking you to implement.</p>
+
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISunTUhvY0c2dG1DbzQ/preview" width="640" height="360"></iframe>
+
+  <p>One detail that is hard to see in the video:</p>
+  <ul>
+    <li>After the quiz is completed (i.e. after all three questions have been answered), it should <em>not</em> be possible to change your answer anymore.</li>
+  </ul>
+
+  <h3 id="choice-grid">1. Choice grid</h3>
+
+  <p>Much of the CSS has already been completed for you, but you need to finish styling the answer choice grids.</p>
+
+  <p><strong>Choice grid</strong>
+<img src="images/hw2-dog-grid.png" class="screenshot" /></p>
+  <ul>
+    <li>You should use a <strong>multi-row flexbox</strong> to achieve this layout.
+      <ul>
+        <li>We didn’t talk about multi-row flexbox layout in class, but you can allow flex items to wrap onto the next line (i.e. the second row) by setting <code class="highlighter-rouge">flex-wrap: wrap;</code> onto the flex container.</li>
+      </ul>
+    </li>
+    <li>There is <code class="highlighter-rouge">20px</code> of space between each row</li>
+    <li>Each flex item has a width of <code class="highlighter-rouge">32.5%</code>, and each item is spread out with as much space between the other as there can be in the flex container.</li>
+  </ul>
+
+  <p><strong>Choice: unanswered</strong>
+<img src="images/hw2-dog-unanswered.png" class="screenshot" /></p>
+  <ul>
+    <li>Container
+      <ul>
+        <li>Background color is <code class="highlighter-rouge">#f4f4f4</code></li>
+        <li>Border is <code class="highlighter-rouge">1px</code> thick and color is <code class="highlighter-rouge">#dcdcdc</code></li>
+        <li>Width of the element <strong>including</strong> the border is <code class="highlighter-rouge">32.5%</code>
+          <ul>
+            <li><strong>Hint:</strong> The <code class="highlighter-rouge">box-sizing</code> CSS property might be helpful. See April 12 slides.</li>
+          </ul>
+        </li>
+        <li>Space between the border and the content of the element is <code class="highlighter-rouge">10px</code>.</li>
+      </ul>
+    </li>
+    <li>Choice image (i.e. dog, house, or toy image)
+      <ul>
+        <li><strong>Hints:</strong> We did not tell you the width or height of the image intentionally, as we want you figure out how to get it to behave like this. There are many ways to get the images to “shrink” inside its container
+          <ul>
+            <li>The <a href="../lectures/09/tictactoe.html">tic-tac-toe example</a> has almost the same layout, and fits the X and O images into the invisible <code class="highlighter-rouge">&lt;div&gt;</code> containers. Take a look at the CSS for this example.</li>
+            <li>The beverage image of HW1 also had similar behavior. Recall what dimensions we gave you for the beverage image.</li>
+            <li>You are allowed to modify the HTML if you’d like (but you don’t necessarily have to if you choose a different approach)</li>
+            <li>You might also find <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:first-child"><code class="highlighter-rouge">:first-child</code></a> pseudo-selector helpful (but you don’t necessarily have to if you choose a different approach)</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Checkbox
+      <ul>
+        <li>The unchecked image is <code class="highlighter-rouge">images/unchecked.png</code></li>
+        <li>The height and width is of the image is <code class="highlighter-rouge">20px</code></li>
+        <li><strong>Note:</strong> Do not use an <code class="highlighter-rouge">&lt;input type="checkbox" /&gt;</code> for this. Just display the image.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="mobile-layout">2. Mobile layout</h3>
+
+  <p>You need to also modify the CSS and HTML if necessary to implement support a mobile view. The video below shows an example of how it should look and behave:</p>
+
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISunbDNhclNnMmNJVkU/preview" width="640" height="360"></iframe>
+
+  <p>Please see April 14 Slides for details on how to implement and test your homework layout in mobile view on your desktop Chrome.</p>
+
+  <p><strong>Note:</strong> You should <strong>not</strong> have to load your web page on your phone in order to test this layout. Emulate mobile in <a href="https://developers.google.com/web/tools/chrome-devtools/device-mode/">Chrome</a>, <a href="https://developer.mozilla.org/en-US/docs/Tools/Responsive_Design_Mode">FireFox</a>, or <a href="http://www.kirkville.com/use-safaris-responsive-design-mode-in-el-capitan/">Safari</a>.</p>
+
+  <ul>
+    <li>If the page is viewed on mobile:
+      <ul>
+        <li>The viewport should be set to zoom-level 100%, and the width should be the device width</li>
+      </ul>
+    </li>
+    <li>If the device screen size is less than <code class="highlighter-rouge">700px</code> wide:
+      <ul>
+        <li>The width of the page content should be <code class="highlighter-rouge">95%</code> instead of <code class="highlighter-rouge">700px</code></li>
+        <li>The yellow circles in the page header should not appear</li>
+      </ul>
+    </li>
+    <li>If the device screen size is less than <code class="highlighter-rouge">500px</code> wide:
+      <ul>
+        <li>Each answer choice should be <code class="highlighter-rouge">49%</code> in width instead of <code class="highlighter-rouge">32.5%</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="quiz-behavior">3. Quiz behavior</h3>
+
+  <p>This web page is a 3-question personality quiz. Write the code necessary to implement the quiz behavior as detailed below.</p>
+
+  <p>Even though you will mostly be writing JavaScript for this part, you may need to also update the HTML or CSS in order to implement the behavior as described.</p>
+
+  <p><strong>Hint:</strong> Aspects of the quiz are quite similar in behavior to the <a href="../lectures/09/tictactoe.html">tic-tac-toe.html example</a> discussed in lecture.</p>
+
+  <p><strong>Dataset Attributes</strong></p>
+
+  <p>Note that you should take advantage of the <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes">dataset attributes</a> added to the HTML elements in <code class="highlighter-rouge">index.html</code>:</p>
+  <ul>
+    <li><code class="highlighter-rouge">data-choice-id</code>: Maps to which quiz result the choice should “count” for, as defined in <code class="highlighter-rouge">constants.js</code>. See details below for scoring and what to do if there are ties.</li>
+    <li><code class="highlighter-rouge">data-question-id</code>: Maps to the question number: one, two, and three.</li>
+  </ul>
+
+  <p>You can access these attributes in JavaScript by using:</p>
+  <ul>
+    <li>element<code class="highlighter-rouge">.dataset.choiceId</code></li>
+    <li>element<code class="highlighter-rouge">.dataset.questionId</code></li>
+  </ul>
+
+  <p>And you can select these attributes via CSS selectors like the following:</p>
+  <ul>
+    <li><code class="highlighter-rouge">[data-choice-id='blep']</code></li>
+    <li><code class="highlighter-rouge">[data-question-id='two']</code></li>
+  </ul>
+
+  <hr />
+
+  <p><strong>Clicking an answer</strong></p>
+
+  <p>When the user clicks an answer choice, the answer choices should update in the following way:</p>
+
+  <p><img src="images/hw2-dog-answered.png" class="screenshot" /></p>
+  <ul>
+    <li>For the selected item:
+      <ul>
+        <li>The checkbox image should change from unchecked to checked</li>
+        <li>Background color is <code class="highlighter-rouge">#cfe3ff</code></li>
+        <li>The checked image is <code class="highlighter-rouge">images/checked.png</code></li>
+      </ul>
+    </li>
+    <li>For the unchosen items:
+      <ul>
+        <li>They should be made semi-transparent by setting their <code class="highlighter-rouge">opacity: 0.6;</code></li>
+        <li>Note that only the unchosen items <em>for this question</em> should change style.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Changing an answer</strong></p>
+
+  <p>If the user has not completed the quiz (i.e. there is at least one unanswered question), they should be able to change their answer to a question by clicking a different answer.</p>
+
+  <p>After the user has answered every question, the answer choices should lock and it should no longer be possible to change an answer, until the user clicks “Restart quiz” or refreshes the page.</p>
+
+  <p><strong>Completing the quiz</strong></p>
+
+  <p>After the user has answered all three questions, the quiz is complete.</p>
+
+  <ul>
+    <li>It should not be possible to select another answer after you’ve completed the quiz.
+      <ul>
+        <li>i.e. you click another dog after the quiz is complete, nothing on the page should change.</li>
+      </ul>
+    </li>
+    <li>The page should remain in this “completed” state until the user refreshes the page or clicks “Restart quiz”.</li>
+  </ul>
+
+  <p>The personality results should appear at the bottom of the page, with the personality data that corresponds to the dog, as defined by <code class="highlighter-rouge">constants.js</code>.</p>
+
+  <p>Here is the description of how the personality results should look:</p>
+
+  <p><img src="images/hw2-dog-results.png" class="screenshot" /></p>
+  <ul>
+    <li>Result button
+      <ul>
+        <li>Background color is <code class="highlighter-rouge">#cecece</code></li>
+        <li>On hover, the color should change to <code class="highlighter-rouge">#e0e0e0</code>
+<img src="images/hw2-result-hover.png" class="screenshot" /></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Scoring the quiz</strong></p>
+
+  <p>The <code class="highlighter-rouge">data-choice-id</code> for each answer choice maps to the key name for each possible result in <code class="highlighter-rouge">RESULTS_MAP</code>, stored in <code class="highlighter-rouge">constants.js</code>. You can access <code class="highlighter-rouge">RESULTS_MAP</code> in <code class="highlighter-rouge">script.js</code> because <code class="highlighter-rouge">constants.js</code> is included before <code class="highlighter-rouge">script.js</code> in <code class="highlighter-rouge">index.html</code>.</p>
+
+  <p>When the quiz is complete, you can score the quiz by tallying the <code class="highlighter-rouge">data-choice-id</code>s from each answer. For example, if a user chooses <code class="highlighter-rouge">blepdog.jpg</code>, <code class="highlighter-rouge">sleepybed.jpg</code>, and <code class="highlighter-rouge">bleptoy.jpg</code>, you should show the title and contents from <code class="highlighter-rouge">RESULTS_MAP['blep']</code>.</p>
+
+  <p>If there is a tie, i.e. if someone chooses all unique <code class="highlighter-rouge">data-choice-id</code>s, the answer to the first question should win. For example, if a user chooses <code class="highlighter-rouge">burgerdog.jpg</code>,  <code class="highlighter-rouge">nerdbed.jpg</code>, and <code class="highlighter-rouge">shydog.jpg</code>, you should show the title and contents from <code class="highlighter-rouge">RESULTS_MAP['burger']</code>.</p>
+
+  <p><strong>Resetting the quiz</strong></p>
+
+  <p>If the user clicks the “Restart quiz” button, the page should reset to its original state.</p>
+
+  <ul>
+    <li>The answer choices should return to their original appearance before the quiz was complete</li>
+    <li>The personality results should disappear</li>
+    <li>The answer choices should be selectable again, and clicking on a different set of answers should result in showing an updated personality type.</li>
+    <li>The page should look and behave the same as if you had refreshed the page (but you should not actually refresh the page)</li>
+    <li>You should also make the page scroll to the top of the “Pick a pup” element.
+      <ul>
+        <li>You can call <code class="highlighter-rouge">element.scrollIntoView();</code> to do this. See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView">mdn</a> for more details.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong><code class="highlighter-rouge">constants.js</code></strong></p>
+  <ul>
+    <li>This file contains the definition of the object <code class="highlighter-rouge">RESULTS_MAP</code>, which maps the dog type to its result title and description.</li>
+    <li>Because this variable is declared in the global scope, you can access this variable in <code class="highlighter-rouge">script.js</code>.</li>
+    <li>You should <strong>not</strong> have to modify this file to solve the homework.</li>
+  </ul>
+
+  <p><strong><code class="highlighter-rouge">script.js</code></strong></p>
+  <ul>
+    <li>This is the file in which we expect you to implement the quiz behavior.</li>
+    <li>You should define and attach event listeners in this file.</li>
+  </ul>
+
+  <p><strong>Image to personality mapping</strong></p>
+
+  <p>The <code class="highlighter-rouge">RESULTS_MAP</code> is defined in <code class="highlighter-rouge">constants.js</code> and the images are saved in the <code class="highlighter-rouge">images/</code> directory.</p>
+
+  <ul>
+    <li><code class="highlighter-rouge">blep{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">blep</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">happy{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">happy</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">sleeping{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">sleeping</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">dopey{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">dopey</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">burger{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">burger</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">cart{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">cart</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">nerd{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">nerd</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">shy{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">shy</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+    <li><code class="highlighter-rouge">sleepy{dog,bed,toy}.jpg</code> corresponds to <code class="highlighter-rouge">sleepy</code> in <code class="highlighter-rouge">RESULTS_MAP</code></li>
+  </ul>
+
+  <p><strong>NOTE</strong>: To make this easier to test, the items for each question are in the order displayed above, i.e. the first answer of every question maps to <code class="highlighter-rouge">blep</code>, the second answer of every question maps to <code class="highlighter-rouge">happy</code>, etc. <strong>You should not rely on this ordering for your homework solution.</strong> Instead, use the dataset attributes as described at the top of this section.</p>
+
+</section>
+
+<section class="part">
+  <h2 id="part-2-evil-extension">Part 2: Evil extension</h2>
+
+  <p>The next two parts of the assignment involve writing Chrome extensions.</p>
+
+  <p>The first extension is called “Evil extension.” When you install it, all instances of “there”, “their”, and “they’re” on the page are changed to the wrong spelling in the following way:</p>
+  <ul>
+    <li>“there” changes to “their”</li>
+    <li>“their” changes to “there”</li>
+    <li>“they’re” also changes to “there”</li>
+  </ul>
+
+  <p>This mapping (along with a few case-related variations) is stored in the <code class="highlighter-rouge">MATCH_LIST</code> object at the top of the file. Use this mapping to complete the extension.</p>
+
+  <h3 class="no_toc" id="install-chrome">1. Install Chrome</h3>
+
+  <p>This is the only assignment in the quarter where you <strong>must</strong> use Chrome. Please <a href="https://www.google.com/chrome/">download and install Chrome</a> if you haven’t already.</p>
+
+  <h3 class="no_toc" id="install-the-evil-extension">2. Install the Evil Extension</h3>
+
+  <p>The HW2 starter code comes with the starter code for the Evil Extension.</p>
+
+  <p><strong>Open chrome://extensions</strong></p>
+
+  <p>In the URL bar, type in <code class="highlighter-rouge">chrome://extensions</code> and hit enter. This will bring you to Chrome’s extensions settings page.</p>
+
+  <p><img src="images/hw2-extensions.png" class="screenshot" /></p>
+
+  <p><strong>Check “Developer mode”</strong></p>
+
+  <p>In the upper right corner, there is a check box that says “Developer mode.” Check this box.</p>
+
+  <p><img src="images/hw2-dev-mode.png" class="screenshot" /></p>
+
+  <p><strong>Click “Load unpacked extension”</strong></p>
+
+  <p><img src="images/hw2-unpacked-extension.png" class="screenshot" /></p>
+
+  <p><strong>Navigate to the “evil-extension” directory”</strong></p>
+
+  <p>In the file chooser window that pops up, you should navigate to the <code class="highlighter-rouge">evil-extension</code> directory included in the starter code.</p>
+
+  <p><img src="images/hw2-select-dir.png" class="screenshot" /></p>
+
+  <p>You should now see the Evil Extension in the list of extensions.</p>
+
+  <p><img src="images/hw2-evil-loaded.png" class="screenshot" /></p>
+
+  <h3 class="no_toc" id="verify-evil-extension-is-loaded">3. Verify Evil Extension is loaded</h3>
+
+  <p>The Evil Extension contains a print statement in <code class="highlighter-rouge">page.js</code>. Because this is a Chrome extension, this print statement will not show up in the usual Web Console. The following steps will show you how to view this print statement.</p>
+
+  <p><strong>Navigate to a test file</strong></p>
+
+  <p>You can actually do this from any page, but we’re using a test file for simplicity.</p>
+
+  <p>Open the following link in a new tab:</p>
+  <ul>
+    <li><a href="hw2/simple-test.html">simple-test.html</a></li>
+  </ul>
+
+  <p><strong>Open the Web Console</strong></p>
+
+  <p>On the <a href="hw2/simple-test.html">simple-test</a> page, open the Web Console. You should see the debug print statement:</p>
+
+  <p><img src="images/hw2-evil-debug-message.png" class="screenshot" /></p>
+
+  <p><strong>Make a change to <code class="highlighter-rouge">page.js</code></strong></p>
+
+  <p>Every time you make a change to the extension, you will need to refresh the <code class="highlighter-rouge">chrome://extensions</code> page.</p>
+
+  <p>Try making a change and verify it shows up in the console:</p>
+  <ul>
+    <li>Add a second <code class="highlighter-rouge">console.log</code> statement at the bottom of <code class="highlighter-rouge">page.js</code>, such as <code class="highlighter-rouge">console.log('Extension updated');</code></li>
+    <li>Navigate to chrome://extensions in a new tab, and either click “Reload” or press command-R (ctrl-R on Windows)</li>
+    <li>Navigate to <a href="hw2/simple-test.html">simple-test.html</a> and view the Web Console.</li>
+  </ul>
+
+  <p>You should see your second print statement in the Web Console:</p>
+
+  <p><img src="images/hw2-ext-updated.png" class="screenshot" /></p>
+
+  <p><strong>Debugging the script</strong></p>
+
+  <p>You will probably want to debug your extension’s JavaScript using the <a href="https://developers.google.com/web/tools/chrome-devtools/javascript/reference">Chrome Debugger</a>. You can find the JavaScript files from this extension by navigating to:</p>
+  <ul>
+    <li>Sources -&gt; Content Scripts -&gt; Top -&gt; Evil Extension -&gt; page.js</li>
+  </ul>
+
+  <p><img src="images/hw2-debug-content-script.png" class="screenshot" /></p>
+
+  <p>You can then set breakpoints in this view.</p>
+
+  <h3 class="no_toc" id="implement-transformtextnodes">4. Implement <code class="highlighter-rouge">transformTextNodes</code></h3>
+
+  <p>The <code class="highlighter-rouge">transformTextNodes</code> function should recursively walk the DOM tree and modify the <code class="highlighter-rouge">textContents</code> of each text node that contains a “there”, “their”, or “they’re” as necessary:</p>
+  <ul>
+    <li>“there” changes to “their”</li>
+    <li>“their” changes to “there”</li>
+    <li>“they’re” also changes to “there”</li>
+  </ul>
+
+  <p>These rules (along with a few case shifts) are contained by <code class="highlighter-rouge">MATCH_LIST</code>.</p>
+
+  <p>The <code class="highlighter-rouge">transformTextNodes</code> function takes a DOM node reference as a parameter. At the bottom of <code class="highlighter-rouge">page.js</code>, there’s an initial call to the function: <code class="highlighter-rouge">transformTextNodes(document.body)</code>. You should not have to change this function call.</p>
+
+  <p><strong>Limitations:</strong><br />
+It is OK if your extension has the following limitations:</p>
+  <ul>
+    <li>Your transformation only has to work on the variants of “there” as defined in <code class="highlighter-rouge">MATCH_LIST</code>. For example, your function does <em>not</em> have to change <code class="highlighter-rouge">thERE</code> or <code class="highlighter-rouge">ThEy'Re</code>.</li>
+    <li>Your transformation only has to work on exactly matches to <code class="highlighter-rouge">MATCH_LIST</code> and not substring matches. For example, For example, your function does <em>not</em> have to change instances of “there” with punctuation, like <code class="highlighter-rouge">"There," she said.</code> or words where “there” is a substring like “therefore”</li>
+  </ul>
+
+  <p><strong>Note:</strong> You may not use the <code class="highlighter-rouge">TreeWalker</code> JavaScript API to solve this, only because we want you to get a deeper understanding of the DOM through walking the tree manually. However, if you were implementing something like this outside of 193X, you should use <code class="highlighter-rouge">TreeWalker</code> instead of manually walking the tree.</p>
+
+  <p><strong>Helpful <code class="highlighter-rouge">Node</code> properties</strong></p>
+  <ul>
+    <li>These are also defined in the <a href="../lectures/">Apr 21 slides</a>:
+      <ul>
+        <li><code class="highlighter-rouge">childNodes</code>: list of the children of a given node (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/childNodes">mdn</a>)</li>
+        <li><code class="highlighter-rouge">textContent</code>: the text content of the node and all of its descendants (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent">mdn</a>)</li>
+        <li><code class="highlighter-rouge">nodeType</code>: the type of the node, such as <code class="highlighter-rouge">Node.TEXT_NODE</code> or <code class="highlighter-rouge">Node.ELEMENT_NODE</code> <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nodetype">mdn</a></li>
+        <li><code class="highlighter-rouge">nodeName</code>: the name of the node: will print out the tag name if an <code class="highlighter-rouge">Element</code> (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/nodename">mdn</a>)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Hint: Skip <code class="highlighter-rouge">SCRIPT</code> and <code class="highlighter-rouge">STYLE</code> elements</strong></p>
+  <ul>
+    <li>You should not examine the <code class="highlighter-rouge">textContent</code> of <code class="highlighter-rouge">&lt;script&gt;</code> and <code class="highlighter-rouge">&lt;style&gt;</code> tags, as this might affect the JavaScript / CSS of a web page if that page is embedding JavaScript or CSS directly in the HTML via those tags.</li>
+  </ul>
+
+  <p><strong>Hint: String manipulation</strong></p>
+  <ul>
+    <li>You may need to use JavaScript string methods that we did not cover in class. You can see the <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Methods_unrelated_to_HTML">MDN string reference</a> for the complete list of operations. Particularly <code class="highlighter-rouge">split</code>, <code class="highlighter-rouge">join</code>, and <code class="highlighter-rouge">trim</code> may be helpful.
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#Methods_unrelated_to_HTML">MDN string reference</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Implementation hints</strong></p>
+  <ul>
+    <li>The <a href="../lectures/">Apr 21 coding examples</a> include <code class="highlighter-rouge">dom-walk-script.js</code>, which may be useful to you. This example both:
+      <ul>
+        <li>Recursively walks the entire DOM</li>
+        <li>Finds the <code class="highlighter-rouge">Text</code> nodes of the tree and prints them out</li>
+      </ul>
+    </li>
+    <li>As explained at the end of the <a href="../lectures/">Apr 21 slides</a>, all text content of an HTML page is contained in a <code class="highlighter-rouge">Text</code> node. These text nodes are always leafs in the tree.
+      <ul>
+        <li>Here’s an <a href="https://javascript.info/dom-nodes#other-node-types">interactive example</a> of the nodes within the DOM</li>
+      </ul>
+    </li>
+    <li>The <code class="highlighter-rouge">textContent</code> property of each DOM Node represents the text content of the node itself along with the text content of any descendants (<a href="https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent">mdn</a>).
+      <ul>
+        <li><code class="highlighter-rouge">textContent</code> is both a readable and writeable property
+          <ul>
+            <li>You can view the text content of an element and its descendants like <code class="highlighter-rouge">console.log(element.textContent);</code></li>
+            <li>You can modify the text content of an element and its descendants by assigning the property to a new value, like <code class="highlighter-rouge">element.textContent = 'hello';</code></li>
+            <li>If you edit the <code class="highlighter-rouge">textContent</code> of any element that’s not a <code class="highlighter-rouge">Text</code> node, you may strip inline tags: <a href="https://codepen.io/bee-arcade/pen/4d90a7fd410d1da9f836a502ff2374ae?editors=1010">See this example</a></li>
+            <li>Therefore if you are trying to write an extension to manipulate text (such as for Part 2 of this assignment), you <strong>must</strong> operate on the <code class="highlighter-rouge">textContent</code> of Text nodes, and <strong>not</strong> the <code class="highlighter-rouge">textContent</code> of Element nodes</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="evil-extension-test-files">5. Evil Extension test files</h3>
+
+  <p>You should verify your Evil Extension works on the following files:</p>
+  <ul>
+    <li><a href="hw2/simple-test.html">simple-test.html</a></li>
+    <li><a href="hw2/inline1.html">inline1.html</a></li>
+    <li><a href="hw2/inline2.html">inline2.html</a></li>
+    <li><a href="hw2/nested-test.html">nested-test.html</a></li>
+    <li><a href="https://www.nytimes.com/2017/04/18/dining/halal-cart-food-vendor-new-york-city.html">NYT article</a></li>
+  </ul>
+
+  <!--
+**Your extension does NOT have to work on files other than the ones listed.**
+- One example in particular: Your extension will NOT work on CodePen links. This is because CodePen loads code dynamically in an `iframe`, which means content scripts cannot run in the output windows of CodePen.
+-->
+
+</section>
+
+<section class="part">
+  <h2 id="part-3-optional-twitter-gardener">Part 3: OPTIONAL: Twitter gardener</h2>
+
+  <p>This part is <strong>entirely optional</strong> and can be completed for extra credit.</p>
+
+  <p>Here is a video of the Twitter Gardener behavior:</p>
+
+  <iframe src="https://drive.google.com/file/d/0BxtKIz3gISunX1g1YkFxbWNfZnM/preview" width="640" height="360"></iframe>
+
+  <p>When the user clicks “Start Gardening”, the tweets on a Twitter feed are highlighted on hover. When you click a tweet, the text contents of the tweet are replaced with a positive affirmation.</p>
+
+  <h3 class="no_toc" id="install-the-twitter-gardener-extension">1. Install the Twitter gardener extension</h3>
+
+  <p>You can install the extension in the same way you installed the Evil extension.</p>
+
+  <h3 class="no_toc" id="implement-pagejs">2. Implement <code class="highlighter-rouge">page.js</code></h3>
+
+  <p>The <code class="highlighter-rouge">popup.html</code> and <code class="highlighter-rouge">popup.js</code> file are already fully implemented and do not need to be modified.</p>
+
+  <p>You should implement the <code class="highlighter-rouge">onMessage</code> function in <code class="highlighter-rouge">page.js</code>, as well as any helpers. This function is called when you click the “Start Gardening” or “Stop Gardening”. The <code class="highlighter-rouge">gardeningInProgress</code> parameter is true if the user has just clicked <code class="highlighter-rouge">Start Gardening</code> and false if the user has just clicked <code class="highlighter-rouge">Stop Gardening</code>.</p>
+
+  <p><strong>Styling, selecting, and adding event listeners to tweets</strong></p>
+  <ul>
+    <li>Your extension will be dependent on the CSS classes Twitter set on its website.</li>
+    <li>Inspect the elements of a <a href="https://twitter.com/maggieNYT">Twitter page</a> to see what CSS selector you need to select all tweets.</li>
+  </ul>
+
+  <p><strong>Cursor</strong></p>
+  <ul>
+    <li>When you hover over a tweet, you should change the cursor to <code class="highlighter-rouge">images/rose-cursor.gif</code>
+      <ul>
+        <li>In order to access an image packed in a Chrome extension, you need to use <code class="highlighter-rouge">chrome.runtime.getURL</code>, e.g.:<br />
+<code class="highlighter-rouge">const url = chrome.runtime.getURL('images/rose-cursor.gif');</code>`</li>
+        <li>To set a cursor style, you can use the CSS property <code class="highlighter-rouge">cursor</code>, e.g.:<br />
+<code class="highlighter-rouge">someElement.style.cursor = 'url(' + url + ') 4 12, auto';</code></li>
+        <li>To unset a cursor style, set the style to the empty string, e.g.:<br />
+<code class="highlighter-rouge">someElement.style.cursor = '';</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Background</strong></p>
+  <ul>
+    <li>When you hover over a tweet, the background of the tweet should change to <code class="highlighter-rouge">images/sparkle.gif</code>
+      <ul>
+        <li>In order to access an image packed in a Chrome extension, you need to use <code class="highlighter-rouge">chrome.runtime.getURL</code>, e.g.:<br />
+<code class="highlighter-rouge">const url = chrome.runtime.getURL('images/sparkle.gif');</code>`</li>
+        <li>You should also set the opacity to <code class="highlighter-rouge">0.8</code>.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Clicking a tweet</strong></p>
+  <ul>
+    <li>When you click on a tweet, the text contents of the tweet should change to a random positive affirmation.
+      <ul>
+        <li>Normally clicking on a link causes the tweet to expand, so you need to stop this behavior. You can do this with <code class="highlighter-rouge">event.stopPropagation();</code>, where <code class="highlighter-rouge">event</code> is the <code class="highlighter-rouge">Event</code> parameter name <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/stopPropagation">mdn</a>.</li>
+        <li>The text contents of quoted tweets should change to a random positive affirmation as well.</li>
+      </ul>
+    </li>
+    <li>The positive affirmations are stored in the <code class="highlighter-rouge">POSITIVE_MESSAGES</code> list.
+      <ul>
+        <li>You can select a random index of <code class="highlighter-rouge">POSITIVE_MESSAGES</code> by using the following JavaScript:<br />
+<code class="highlighter-rouge">Math.floor(Math.random() * POSITIVE_MESSAGES.length);</code>`</li>
+        <li>You can add your own positive affirmations to the array if you wish!</li>
+      </ul>
+    </li>
+    <li>The affirmations do not persist after refresh.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="submit">Submit</h2>
+
+  <p>Upload your completed homework to your GitHub repository and publish them, in the same way that you did with <a href="../homework/0-welcome">Homework 0</a>.</p>
+
+  <p>Turn in the link to your GitHub repository and the link to your completed personality quiz page via this form:</p>
+  <ul>
+    <li><a href="https://goo.gl/forms/p10BEbVMZ1ODqZn03">Submission Form</a></li>
+  </ul>
+
+</section>
+
+</article>
+
+        </section>
+       
+      </section>
+    </div>
+  </body>
+</html>

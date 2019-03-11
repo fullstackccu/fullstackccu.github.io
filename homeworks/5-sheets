@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html>
+ 
+
+
+<head>
+  <meta charset="utf-8">
+  <title>CS193X: Web Programming Fundamentals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/syntax.css"/>
+  <script src="https://use.fontawesome.com/c63611dac2.js"></script>
+  <script src="../js/script.js" defer="true"></script>
+</head>
+
+  <body>
+    <div id="container" class="full">
+      <section class="head">
+        <nav>
+          <ul>
+            <li>
+              <a href="../homework" class="nav">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Back
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <header>
+          
+          <h2>
+            Homework 5
+          </h2>
+          
+          <h1>Sheetsu Clone</h1>
+        </header>
+      </section>
+      <section class="main">
+        <section>
+          <article>
+  
+<p>In this homework, you will be creating NodeJS server that can read, write, and delete data from a Google Spreadsheet. These operations are also called <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete">CRUD operations</a>, though we are making the “U”/”Update” operation extra credit.</p>
+
+<p>You will be writing a stripped-down clone of <a href="https://sheetsu.com/">Sheetsu</a>, which is a service that turns Google Spreadsheets into a REST API. Sheetsu charges a pretty obscene price of <a href="https://sheetsu.com/pricing">$19 to $95 per month</a> for this service. You will be implementing the same service for free.</p>
+
+<p>You will notice that this assignment involves a lot more non-coding steps compared to the previous homeworks. That is because setting up and deploying a backend often involves a lot of non-coding tasks. For example, we walk you through creating a Google Service Account, which you would also need to do to use Google Cloud. To compensate for the tricky setup, though, we tried to streamline the coding requirement: You are only required to complete 3 functions.</p>
+
+<p><strong>This assignment requires a fair amount of setup.</strong> Please try to get through the steps marked “SETUP:” by <strong>May 26</strong> so that the course staff can assist you in person before the holiday weekend if necessary.</p>
+
+<p><span class="label">Due Date:</span> Wed, May 31, 2017 at 11:59pm <em>(late cutoff: Thu, June 1, 2017 at 11:59pm)</em><br />
+<strong>NOTE:</strong> We changed the due date to 5/31, but the late cutoff is still the same (6/1).<br />
+<span class="label">Setup steps:</span> We strongly suggest you complete the steps marked “SETUP:” by Thursday, May 26, so that we can assist you well ahead of time if you need help. We do not guarantee to be available for troubleshooting setup issues over the holiday weekend.<br />
+<span class="label">HW5 Turn-in:</span> <a href="https://goo.gl/forms/LuTWdK9S3510x5ys1">Submission Form</a></p>
+
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#getting-started" id="markdown-toc-getting-started">1. Getting started</a></li>
+  <li><a href="#setup-create-a-google-service-account" id="markdown-toc-setup-create-a-google-service-account">2. SETUP: Create a Google Service Account</a></li>
+  <li><a href="#setup-create-a-gsa-spreadsheet" id="markdown-toc-setup-create-a-gsa-spreadsheet">3. SETUP: Create a GSA spreadsheet</a></li>
+  <li><a href="#setup-set-up-the-starter-code" id="markdown-toc-setup-set-up-the-starter-code">4. SETUP: Set up the starter code</a></li>
+  <li><a href="#using-the-gsa-sheets-node-module" id="markdown-toc-using-the-gsa-sheets-node-module">Using the <code class="highlighter-rouge">gsa-sheets</code> node module</a></li>
+  <li><a href="#clarification-spreadsheet-columns" id="markdown-toc-clarification-spreadsheet-columns">[5/30] CLARIFICATION: Spreadsheet Columns</a></li>
+  <li><a href="#milestone-1-implement-get" id="markdown-toc-milestone-1-implement-get">Milestone 1: Implement GET</a></li>
+  <li><a href="#milestone-2-implement-delete" id="markdown-toc-milestone-2-implement-delete">Milestone 2: Implement DELETE</a></li>
+  <li><a href="#milestone-3-implement-post" id="markdown-toc-milestone-3-implement-post">Milestone 3: Implement POST</a></li>
+  <li><a href="#extra-credit-implement-patch" id="markdown-toc-extra-credit-implement-patch">EXTRA CREDIT: Implement PATCH</a></li>
+  <li><a href="#extra-credit-case-insensitive-search" id="markdown-toc-extra-credit-case-insensitive-search">EXTRA CREDIT: Case-insensitive search</a></li>
+  <li><a href="#submit" id="markdown-toc-submit">Submit</a></li>
+</ul>
+
+<section class="part">
+  <h2 id="getting-started">1. Getting started</h2>
+
+  <h3 class="no_toc" id="accept-the-hw5-assignment">1. Accept the HW5 assignment</h3>
+
+  <ul>
+    <li><a href="https://classroom.github.com/assignment-invitations/6cd338ce368a3ff93b1555bc2f4d67bb">Follow this link</a>, where HW5 is stored on GitHub Classroom.</li>
+    <li>Accept the homework and download the starter code as you did in <a href="../homework/0-welcome">Homework 0</a>.</li>
+  </ul>
+
+  <h3 class="no_toc" id="install-node-v7">2. Install Node v7</h3>
+
+  <p><strong>NOTE: You may need to reinstall Node!</strong> An earlier version of the <a href="../install-node">Node Installation instructions</a> had you downloaded Node v6 instead of v7. Since we want you to use <code class="highlighter-rouge">async</code> functions, which are only available in Node v7+, we need you to <strong>reinstall</strong> Node and download Version 7.10 / the “Current: Latest Features” installer instead.</p>
+
+  <ul>
+    <li>Follow the <a href="../install-node">Node Installation instructions</a>.</li>
+    <li>Make sure you have the right version of <code class="highlighter-rouge">node</code> by running <code class="highlighter-rouge">node -v</code> in your terminal. You should see v7.10:
+<img src="images/node-version.png" class="screenshot" /></li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="setup-create-a-google-service-account">2. SETUP: Create a Google Service Account</h2>
+
+  <p>In order to have our NodeJS server write to a Google Spreadsheet, the server must have permission to write to the spreadsheet.</p>
+
+  <p>Google allows two ways of doing this:</p>
+  <ol>
+    <li>OAuth 2.0: This allows a user to log in and manage spreadsheets <em>owned by the user</em>. This is not what we want; we want to be able to write to a single spreadsheet that we own.</li>
+    <li><strong>Server-to-Server:</strong> This allows our NodeJS server to talk to Google’s servers directly, e.g. to write to a spreadsheet. This is what we want to do.</li>
+  </ol>
+
+  <p>To have our NodeJS server write to a Google Spreadsheet, we need to set up two things:</p>
+  <ul>
+    <li>A Google Service Account (GSA)</li>
+    <li>A Google Service Account key</li>
+  </ul>
+
+  <p>This section contains the instructions for obtaining both a Google Service Account and a GSA key, and how to move the key to the HW5 starter code.</p>
+
+  <h3 class="no_toc" id="log-into-your-gmail-account">0. Log into your @gmail account</h3>
+  <ul>
+    <li>Sign into your Gmail account.
+      <ul>
+        <li><strong>Your @stanford account will not work for this part,</strong>  even though you can access Gmail through it. You must use an @gmail.com account. (<a href="https://piazza.com/class/j0y7gmnuoh167p?cid=161">see piazza post</a>)</li>
+        <li><a href="https://accounts.google.com/SignUp">Create a Gmail account</a> for free if you need to.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="add-the-google-sheets-api">1. Add the Google Sheets API</h3>
+
+  <ul>
+    <li>Navigate to <a href="https://console.developers.google.com">https://console.developers.google.com</a>.
+<a href="images/hw5-gsa-dashboard.png"><img src="images/hw5-gsa-dashboard.png" class="screenshot" /></a></li>
+    <li>In the API search box, type “Google Sheets API”. When it comes up, click on “Google Sheets API.”
+<a href="images/hw5-gsa-sheets-search.png"><img src="images/hw5-gsa-sheets-search.png" class="screenshot" /></a></li>
+  </ul>
+
+  <h3 class="no_toc" id="create-a-project">2. Create a project</h3>
+
+  <ul>
+    <li>You will now need to create a project. Click the “Create Project” button.
+<a href="images/hw5-gsa-create-project.png"><img src="images/hw5-gsa-create-project.png" class="screenshot" /></a></li>
+    <li>You may get a dialog message that looks like the one below. If you do, click “Create”.
+<a href="images/hw5-gsa-weird-dialog.png"><img src="images/hw5-gsa-weird-dialog.png" class="screenshot" /></a></li>
+    <li>Enter any project name, such as “CS193x HW5.”
+<a href="images/hw5-gsa-new-project.png"><img src="images/hw5-gsa-new-project.png" class="screenshot" /></a></li>
+    <li>You will see an <a href="images/hw5-gsa-new-project-loading.png">intermediate loading screen</a>, then it will take you back to the Google Sheets API page.
+<a href="images/hw5-gsa-sheets-api-again.png"><img src="images/hw5-gsa-sheets-api-again.png" class="screenshot" /></a></li>
+  </ul>
+
+  <h3 class="no_toc" id="enable-the-api">3. Enable the API</h3>
+
+  <ul>
+    <li>Click the “Enable” button. You will be taken to the Credentials page.
+<a href="images/hw5-gsa-enable-sheets.png"><img src="images/hw5-gsa-enable-sheets.png" class="screenshot" /></a></li>
+  </ul>
+
+  <h3 class="no_toc" id="create-google-service-account--key">4. Create Google Service Account + key</h3>
+
+  <ul>
+    <li>Click the “Create Credentials” button. This will take you to the Credentials wizard.
+<a href="images/hw5-gsa-create-credentials.png"><img src="images/hw5-gsa-create-credentials.png" class="screenshot" /></a></li>
+    <li>Fill out the first part of the wizard as follows:
+      <ul>
+        <li>Which API are you using? <strong>Google Sheets API</strong></li>
+        <li>Where will you be calling the API from? <strong>Web server</strong></li>
+        <li>What data will you be accessing? <strong>Application data</strong></li>
+        <li>Are you using Google App Engine or Google Compute Engine? <strong>No, I’m not using them</strong></li>
+      </ul>
+    </li>
+    <li>Then click “What credentials do I need?” This will prompt you to create a Google Service Account.
+<a href="images/hw5-gsa-create-creds-wizard.png"><img src="images/hw5-gsa-create-creds-wizard.png" class="screenshot" /></a></li>
+    <li>Fill out “Create a service account” second part of the form as follows:
+      <ul>
+        <li>Service account name: Any name you’d like, e.g. “<strong>HW5 sheets</strong>”</li>
+        <li>Role: <strong>Project -&gt; Owner</strong></li>
+        <li>Key type: <strong>JSON</strong> (this is selected by default)</li>
+      </ul>
+    </li>
+    <li>Then click “Continue.”
+<a href="images/hw5-gsa-get-creds.png"><img src="images/hw5-gsa-get-creds.png" class="screenshot" /></a></li>
+    <li>This will immediately download your Google Service Account credentials JSON file for you.
+      <ul>
+        <li><strong>Make note of where this file was downloaded!</strong> We will refer to this file again soon.
+<a href="images/hw5-gsa-creds-downloaded.png"><img src="images/hw5-gsa-creds-downloaded.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="add-google-drive-api">5. Add Google Drive API</h3>
+
+  <ul>
+    <li>After you’ve created a Google Service Account, you will be taken back to the Credentials screen. From this screen, click “Library” on the left sidebar.
+<a href="images/hw5-gsa-search-drive.png"><img src="images/hw5-gsa-search-drive.png" class="screenshot" /></a></li>
+    <li>Search for “google drive api,” then click on “Google Drive API” when it comes  up.
+<a href="images/hw5-gsa-add-drive-api.png"><img src="images/hw5-gsa-add-drive-api.png" class="screenshot" /></a></li>
+    <li>Click “Enable”, like you did for the Google Sheets API
+<a href="images/hw5-gsa-enable-drive.png"><img src="images/hw5-gsa-enable-drive.png" class="screenshot" /></a></li>
+  </ul>
+
+  <p>We are now done with the Google Developers Console.</p>
+
+  <h3 class="no_toc" id="copy-gsa-credentials-to-privatesettingsjson">6. Copy GSA credentials to <code class="highlighter-rouge">privateSettings.json</code></h3>
+
+  <ul>
+    <li>In Atom, open the credentials JSON file that was downloaded for you at the end of Step 4. It should look something like this:
+<a href="images/hw5-gsa-json.png"><img src="images/hw5-gsa-json.png" class="screenshot" /></a>
+      <ul>
+        <li>The most important entries are the <code class="highlighter-rouge">private_key</code> and <code class="highlighter-rouge">client_email</code> fields.</li>
+      </ul>
+    </li>
+    <li>In Atom, also open your HW5 starter code and the <code class="highlighter-rouge">privateSettings.json</code> file. <code class="highlighter-rouge">privateSettings.json</code> should be completely empty.</li>
+    <li>Now copy the contents of the credentials JSON file into <code class="highlighter-rouge">privateSettings.json</code>.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="setup-create-a-gsa-spreadsheet">3. SETUP: Create a GSA spreadsheet</h2>
+
+  <p>In this section, you will create a special Google spreadsheet to which your NodeJS server will be able to write data. To do this, you will need to create a spreadsheet via the <code class="highlighter-rouge">cs193x-sheets</code> command-line tool, distributed on <code class="highlighter-rouge">npm</code>.</p>
+
+  <h3 class="no_toc" id="install-cs193x-sheets">1. Install <code class="highlighter-rouge">cs193x-sheets</code></h3>
+
+  <ul>
+    <li>In your terminal, navigate to the directory that contains the HW5 starter code you downloaded from GitHub.
+      <ul>
+        <li>If you need help working a terminal, <a href="../install-node">see guide here</a>
+<a href="images/hw5-starter-directory.png"><img src="images/hw5-starter-directory.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+    <li>Run <code class="highlighter-rouge">npm install -g cs193x-sheets</code> to install the cs193x-sheets command-line tool.
+      <ul>
+        <li>You may need to use <code class="highlighter-rouge">sudo</code>.</li>
+        <li>You will use this command-line tool to create spreadsheets that your NodeJS server can write to.
+<a href="images/hw5-install-sheets-tool.png"><img src="images/hw5-install-sheets-tool.png" class="screenshot" /></a>
+<a href="images/hw5-sheets-tool-installed.png"><img src="images/hw5-sheets-tool-installed.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="run-cs193x-sheets">2. Run <code class="highlighter-rouge">cs193x-sheets</code></h3>
+
+  <ul>
+    <li>Now run the <code class="highlighter-rouge">cs193x-sheets</code> command:
+<a href="images/hw5-sheets-prompt.png"><img src="images/hw5-sheets-prompt.png" class="screenshot" /></a></li>
+    <li>Type “c” to create a new spreadsheet and enter the following:
+      <ul>
+        <li>Title of spreadsheet: Anything you’d like, e.g. “<strong>HW5 spreadsheet</strong>”</li>
+        <li>Enter your email: Your email address (must be a Gmail-enabled account, such as @gmail or @stanford)</li>
+      </ul>
+    </li>
+    <li>Afterward the tool will print out “Spreadsheet created” with the URL of your new spreadsheet.
+      <ul>
+        <li>The only people who can access this spreadsheet are you (via the email you entered) and the course staff.
+<a href="images/hw5-spreadsheet-created.png"><img src="images/hw5-spreadsheet-created.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>NOTES:</strong></p>
+
+  <p>Technically the spreadsheet you just created is owned by your Google Service Account, and not your public Gmail account, which is why you need to use the command-line tool to create and manage the spreadsheet. You cannot access Google Service Account documents via Google’s web interface.</p>
+
+  <p>Also, you must always run <code class="highlighter-rouge">cs193x-sheets</code> in the same directory as <code class="highlighter-rouge">privateSettings.json</code>, so that it can access your Google Service Account credentials.</p>
+
+  <h3 class="no_toc" id="open-your-spreadsheet-and-fill-with-some-fake-data">3. Open your spreadsheet and fill with some fake data</h3>
+
+  <ul>
+    <li>Open the spreadsheet you just created via command-line</li>
+    <li>Fill it out with fake data <a href="https://docs.google.com/spreadsheets/d/1GYI-P9g2-7g9PtF8ygZ8LNV8FrGaTpz9f3G-eVTj370/edit?ts=591e76d4#gid=0">like in this spreadsheet</a>
+      <ul>
+        <li><strong>The first row of your spreadsheet should be the column labels.</strong>
+<a href="images/hw5-sheet-data.png"><img src="images/hw5-sheet-data.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<section class="part">
+  <h2 id="setup-set-up-the-starter-code">4. SETUP: Set up the starter code</h2>
+
+  <p>At last, you are ready to configure the starter code and get working on the assignment!</p>
+
+  <p><strong>Note:</strong> In this assignment, you will not need to modify any of the code in <code class="highlighter-rouge">public/</code>, including <code class="highlighter-rouge">public/js/script.js</code>.</p>
+
+  <h3 class="no_toc" id="set-spreadsheetid-in-serverjs">1. Set <code class="highlighter-rouge">SPREADSHEET_ID</code> in <code class="highlighter-rouge">server.js</code></h3>
+
+  <ul>
+    <li>Open <code class="highlighter-rouge">server.js</code> from the HW5 starter code in Atom</li>
+    <li>Change the value of SPREADSHEET_ID to the ID of your spreadsheet. This is the long series of numbers, letters, and dashes after the <code class="highlighter-rouge">d/</code> in the Google Spreadsheets URL.
+      <ul>
+        <li>For example, in <code class="highlighter-rouge">https://docs.google.com/spreadsheets/d/1GYI-P9g2-7g9PtF8ygZ8LNV8FrGaTpz9f3G-eVTj370</code>, the Spreadsheet ID is <strong>1GYI-P9g2-7g9PtF8ygZ8LNV8FrGaTpz9f3G-eVTj370</strong>
+<a href="images/hw5-sheet-id.png"><img src="images/hw5-sheet-id.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="run-npm-install">2. Run <code class="highlighter-rouge">npm install</code></h3>
+
+  <ul>
+    <li>In the terminal, make sure you are still in the directory that contains the HW5 starter code you downloaded from GitHub.</li>
+    <li>Run <code class="highlighter-rouge">npm install</code>
+<a href="images/hw5-install-deps.png"><img src="images/hw5-install-deps.png" class="screenshot" /></a>
+<a href="images/hw5-install-deps-finished.png"><img src="images/hw5-install-deps-finished.png" class="screenshot" /></a></li>
+  </ul>
+
+  <h3 class="no_toc" id="run-npm-start">3. Run <code class="highlighter-rouge">npm start</code></h3>
+
+  <ul>
+    <li>Now run <code class="highlighter-rouge">npm start</code> to start your server. You should see the “Server listening on port 3000!” message.
+<a href="images/hw5-run-server.png"><img src="images/hw5-run-server.png" class="screenshot" /></a></li>
+  </ul>
+
+  <h3 class="no_toc" id="test-httplocalhost3000">4. Test <code class="highlighter-rouge">http://localhost:3000</code></h3>
+
+  <ul>
+    <li>Navigate to <code class="highlighter-rouge">http://localhost:3000</code></li>
+    <li>
+      <p>You should see a fully-implemented test page that you will use to test your backend.
+<a href="images/hw5-test-page.png"><img src="images/hw5-test-page.png" class="screenshot" /></a></p>
+    </li>
+    <li>On the test page, click the “FETCH” button.</li>
+    <li>After a few seconds, you should see the following at the bottom of the page:
+<a href="images/hw5-fetch-status.png"><img src="images/hw5-fetch-status.png" class="screenshot" /></a></li>
+    <li>On the terminal where your server is running, you should see what the output of <code class="highlighter-rouge">console.log(rows)</code>:
+<a href="images/hw5-query-result.png"><img src="images/hw5-query-result.png" class="screenshot" /></a></li>
+  </ul>
+
+  <h3 class="no_toc" id="change-and-reload-server">5. Change and reload server</h3>
+
+  <p>Every time you change the code in <code class="highlighter-rouge">server.js</code>, you will have to kill and rerun your server process. Let’s practice that here to make sure you understand your development workflow.</p>
+
+  <ul>
+    <li>Modify <code class="highlighter-rouge">server.js</code> in trivial ways:
+      <ul>
+        <li>Have it print a slightly different message after the server process is bound to port 3000.</li>
+        <li>Have it return <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">status:</span><span class="w"> </span><span class="err">'unimplemented!!!'</span><span class="p">}</span></code> in response to a GET request.
+<a href="images/hw5-code-change-print.png"><img src="images/hw5-code-change-print.png" class="screenshot" /></a>
+<a href="images/hw5-code-change-return.png"><img src="images/hw5-code-change-return.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+    <li>Return to the terminal and stop the current node server by pressing <code class="highlighter-rouge">CTRL-C</code></li>
+    <li>Now rerun <code class="highlighter-rouge">npm start</code>
+      <ul>
+        <li>Verify the terminal prints you updated message
+<a href="images/hw5-npm-restarted.png"><img src="images/hw5-npm-restarted.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+    <li>Navigate to <code class="highlighter-rouge">http://localhost:3000</code> and click “Fetch”
+      <ul>
+        <li>Verify the result returned is updated.
+<a href="images/hw5-return-updated.png"><img src="images/hw5-return-updated.png" class="screenshot" /></a></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="using-the-gsa-sheets-node-module">Using the <code class="highlighter-rouge">gsa-sheets</code> node module</h2>
+
+  <p>To update the spreadsheet, you will be using the <code class="highlighter-rouge">gsa-sheets</code> Node library.</p>
+
+  <p>The starter code already creates a <code class="highlighter-rouge">Sheet</code> object for you:</p>
+
+  <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">sheet</span> <span class="o">=</span> <span class="nx">googleSheets</span><span class="p">(</span><span class="nx">key</span><span class="p">.</span><span class="nx">client_email</span><span class="p">,</span> <span class="nx">key</span><span class="p">.</span><span class="nx">private_key</span><span class="p">,</span> <span class="nx">SPREADSHEET_ID</span><span class="p">);</span>
+</code></pre>
+  </div>
+
+  <p>And the <code class="highlighter-rouge">onGet()</code> function calls and prints the results of the <code class="highlighter-rouge">sheet.getRows()</code> method:</p>
+
+  <div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">sheet</span><span class="p">.</span><span class="nx">getRows</span><span class="p">();</span>
+<span class="kr">const</span> <span class="nx">rows</span> <span class="o">=</span> <span class="nx">result</span><span class="p">.</span><span class="nx">rows</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">rows</span><span class="p">);</span>
+</code></pre>
+  </div>
+
+  <p>Here are the public methods of a <code class="highlighter-rouge">Sheet</code> object:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Method name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code class="highlighter-rouge">getRows()</code></td>
+        <td>Returns the rows in the spreadsheet. This is an asynchronous function that returns a <code class="highlighter-rouge">Promise</code> that resolves to a JSON object with one property, <code class="highlighter-rouge">rows</code>. The value of <code class="highlighter-rouge">rows</code> is an array of the spreadsheet’s row values, also stored in an array. For example, if you have a spreadsheet that looks like this: <a href="images/hw5-sheet-data.png">screenshot</a>, the value of “result” in a call to <code class="highlighter-rouge">const result = await sheet.getRows()</code> will look like this: <a href="images/hw5-getrows-json.png">screenshot</a> .</td>
+      </tr>
+      <tr>
+        <td><code class="highlighter-rouge">appendRow(newRow)</code></td>
+        <td>Adds the given row to the end of the spreadsheet. This is an asynchronous function takes an Array parameter, <code class="highlighter-rouge">newRow</code>. The array contains the list of values in order to add to the end of the spreadsheet. For example, a call to <code class="highlighter-rouge">sheet.appendRow([1, 2, 3])</code> would add a row where the first value was 1, the second value was 2, and the third value was 3.<br /><br /><code class="highlighter-rouge">appendRow</code> returns a <code class="highlighter-rouge">Promise</code> that resolves to a result object, which will equal <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">success:</span><span class="w"> </span><span class="nt">"true"</span><span class="w"> </span><span class="err">}</span></code> if the operation was successful, or <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">error:</span><span class="w"> </span><span class="err">&lt;error</span><span class="w"> </span><span class="err">message&gt;</span><span class="w"> </span><span class="p">}</span></code> if the operation failed.</td>
+      </tr>
+      <tr>
+        <td><code class="highlighter-rouge">deleteRow(rowIndex)</code></td>
+        <td>Deletes the given row in the spreadsheet. The <code class="highlighter-rouge">rowIndex</code> indicates the 0-based row number of the spreadsheet, where the first row is 0, the second row is 1, etc.<br /><br /><code class="highlighter-rouge">deleteRow</code> returns a <code class="highlighter-rouge">Promise</code> that resolves to a result object, which will equal <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">success:</span><span class="w"> </span><span class="nt">"true"</span><span class="w"> </span><span class="err">}</span></code> if the operation was successful, or <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">error:</span><span class="w"> </span><span class="err">&lt;error</span><span class="w"> </span><span class="err">message&gt;</span><span class="w"> </span><span class="p">}</span></code> if the operation failed.</td>
+      </tr>
+      <tr>
+        <td><code class="highlighter-rouge">setRow(rowIndex,newRow)</code></td>
+        <td>Sets a particular row in the spreadsheet to the given values. This is an asynchronous function takes two parameters, <code class="highlighter-rouge">rowIndex</code> and <code class="highlighter-rouge">newRow</code>. The <code class="highlighter-rouge">rowIndex</code> indicates the 0-based row number of the spreadsheet, where the first row is 0, the second row is 1, etc. The <code class="highlighter-rouge">newRow</code> is an array of values in the order that they should be set.<br /><br /><code class="highlighter-rouge">setRow</code> returns a <code class="highlighter-rouge">Promise</code> that resolves to a result object, which will equal <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">success:</span><span class="w"> </span><span class="nt">"true"</span><span class="w"> </span><span class="err">}</span></code> if the operation was successful, or <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="err">error:</span><span class="w"> </span><span class="err">&lt;error</span><span class="w"> </span><span class="err">message&gt;</span><span class="w"> </span><span class="p">}</span></code> if the operation failed.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>Bugs?</strong></p>
+  <ul>
+    <li>If you believe there is a bug in the <code class="highlighter-rouge">gsa-sheets</code> library, post to Piazza.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="clarification-spreadsheet-columns">[5/30] CLARIFICATION: Spreadsheet Columns</h2>
+
+  <p>In the examples below, we use a spreadsheet with an “email” and a “name” column.</p>
+
+  <p>However, you <strong>cannot</strong> assume the spreadsheet has an “email” and a “name”; you must make it work with whatever column names are specified in the spreadsheet.</p>
+
+  <ul>
+    <li>You should always treat the first row of the spreadsheet as the names of the columns in the spreadsheet.</li>
+    <li>You may assume that every spreadsheet will have at least one column specified, i.e. you do <em>not</em> have to support an empty spreadsheet</li>
+  </ul>
+
+  <p>Here’s an example of another valid spreadsheet:</p>
+
+  <p><a href="images/hw5-another-valid-spreadsheet.png"><img src="images/hw5-another-valid-spreadsheet.png" class="screenshot" /></a></p>
+
+  <p>Because of this late clarification, we are extending the deadline for HW5 for one day, but the late cut-off remains the same:</p>
+  <ul>
+    <li>Deadline: 5/31 at 11:59pm</li>
+    <li>Late cutoff: 6/1 at 11:59pm</li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="milestone-1-implement-get">Milestone 1: Implement GET</h2>
+
+  <p>When you send a GET request to <code class="highlighter-rouge">http://localhost:3000/api</code>, the server should reply with a JSON representation of the spreadsheet as described below:</p>
+  <ul>
+    <li>Return an array of objects, where each object represents a row:
+      <ul>
+        <li>Each object should be key-value pairs of the form <code class="highlighter-rouge">column: value</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>For example, if your spreadsheet that looks like this:</p>
+
+  <p><a href="images/hw5-sheet-data.png"><img src="images/hw5-sheet-data.png" class="screenshot" /></a></p>
+
+  <p>Then a GET request to <code class="highlighter-rouge">http://localhost:3000/api</code> should return JSON that looks like:</p>
+
+  <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bert"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bert@sesame.street"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ernie"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ernie@sesame.street"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Big bird"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bigbird@sesame.street"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+  </div>
+
+  <p><strong>Spreadsheet Format:</strong></p>
+
+  <ul>
+    <li>You may assume the spreadsheet is <strong>formatted perfectly</strong>:
+      <ul>
+        <li>The first row of the spreadsheet contains the column names.</li>
+        <li>Every row with a value in it is filled out completely, i.e. there are no partially filled out rows. (<a href="images/hw5-invalid-partial-row.png">screenshot</a>)</li>
+        <li>All values belong to a named column (<a href="images/hw5-invalid-no-column.png">screenshot</a>)</li>
+        <li>There are no blank rows in between filled out rows. That is, it’s not possible for row 5 and row 7 to be filled out, but row 6 to be blank. (<a href="images/hw5-invalid-skipped-row.png">screenshot</a>)</li>
+      </ul>
+    </li>
+  </ul>
+
+  <hr />
+
+  <p><strong>Testing GET:</strong></p>
+
+  <p>Use the test page located at <code class="highlighter-rouge">http://localhost:3000/</code> to verify your result. Here’s a screenshot of what the test page looked like after clicking the “Fetch” button:</p>
+
+  <p><a href="images/hw5-test-page-get.png"><img src="images/hw5-test-page-get.png" class="screenshot" /></a></p>
+
+  <hr />
+
+</section>
+
+<section class="part">
+
+  <h2 id="milestone-2-implement-delete">Milestone 2: Implement DELETE</h2>
+
+  <p>When you send a DELETE to <code class="highlighter-rouge">http://localhost:3000/api/</code> with route parameters <strong><code class="highlighter-rouge">column-name/value</code></strong> your server will delete the first row whose column value matches the given parameter.</p>
+  <ul>
+    <li>In other words, a DELETE request to <code class="highlighter-rouge">http://localhost:3000/api/name/Anderson</code> would delete the first row whose “name” value was “Anderson.”</li>
+  </ul>
+
+  <p><strong>DELETE request details:</strong></p>
+  <ul>
+    <li>If there are multiple rows that match the given parameter, delete the first matching row.</li>
+    <li>If there are no rows whose value matches the given parameter, you should still return a success response but the spreadsheet should not change.</li>
+    <li>For simplicity, <strong>you do not have to support case insensitivity</strong>; that is extra credit. In other words, if your column name is “email”, you do not have to make your DELETE request work with <code class="highlighter-rouge">api/Email/o@thegrouch.net</code>. Similarly, if a row value for “name” is “Anderson”, you do not have to delete that row if the DELETE request is for <code class="highlighter-rouge">api/name/anderson</code></li>
+  </ul>
+
+  <p><strong>DELETE response:</strong></p>
+
+  <p>Your server should respond with a success message after updating the spreadsheet, or when your server determines spreadsheet should not be updated.</p>
+
+  <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+  </div>
+
+  <hr />
+
+  <p><strong>Testing DELETE:</strong></p>
+
+  <p>This example assumes your spreadsheet looks like this:</p>
+
+  <p><a href="images/hw5-test-post-sheet-after.png"><img src="images/hw5-test-post-sheet-after.png" class="screenshot" /></a></p>
+
+  <p>Use the test page located at <code class="highlighter-rouge">http://localhost:3000/</code> to verify your result:</p>
+  <ul>
+    <li>Set the API path to <code class="highlighter-rouge">/api/name/Ernie</code></li>
+    <li>Set the “Method” to <code class="highlighter-rouge">DELETE</code></li>
+  </ul>
+
+  <p>Here’s a screenshot of what the test page looked like after clicking the “Fetch” button:</p>
+
+  <p><a href="images/hw5-test-page-delete.png"><img src="images/hw5-test-page-delete.png" class="screenshot" /></a></p>
+
+  <p>And here’s a screenshot of the updated spreadsheet:</p>
+
+  <p><a href="images/hw5-test-delete-sheet-after.png"><img src="images/hw5-test-delete-sheet-after.png" class="screenshot" /></a></p>
+
+</section>
+
+<section class="part">
+
+  <h2 id="milestone-3-implement-post">Milestone 3: Implement POST</h2>
+
+  <p>When you send a POST request to <code class="highlighter-rouge">http://localhost:3000/api</code> with a message body in the format described below, your server should append a row to the end of the spreadsheet.</p>
+
+  <p><strong>POST request details:</strong></p>
+
+  <ul>
+    <li>The message body will be a JavaScript object that represents the row to add to the spreadsheet.</li>
+    <li>The JavaScript object contains key-value pairs of the form <code class="highlighter-rouge">column: value</code></li>
+    <li>For example, the message body might look like:
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Oscar"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"o@thegrouch.net"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+    </li>
+    <li>The column-value pairs will <strong>not necessarily</strong> be defined in the same order as the columns in the spreadsheet. For example, another valid message body is the following:
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@el.mo"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elmo"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+    </li>
+    <li>You may, however, assume that the message body is <strong>perfectly formatted</strong>, i.e. the value for each column is filled out, and it does not specify any columns that don’t already exist in the spreadsheet.</li>
+    <li>For simplicity, you <strong>do not</strong> have to support case insensitivity; that is extra credit. In other words, if your column names are “name” and “email”, you do not have to make your POST request work with <code class="highlighter-rouge"><span class="p">{</span><span class="w"> </span><span class="nt">"Name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Elmo"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@el.mo"</span><span class="w"> </span><span class="p">}</span></code></li>
+  </ul>
+
+  <p><strong>POST response:</strong></p>
+
+  <p>Your server should respond with a success message after updating the spreadsheet.</p>
+
+  <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+  </div>
+
+  <hr />
+
+  <p><strong>Testing POST:</strong></p>
+
+  <p>This example assumes your spreadsheet looks like this:</p>
+
+  <p><a href="images/hw5-sheet-data.png"><img src="images/hw5-sheet-data.png" class="screenshot" /></a></p>
+
+  <p>Use the test page located at <code class="highlighter-rouge">http://localhost:3000/</code> to verify your result:</p>
+  <ul>
+    <li>Make sure the API path is <code class="highlighter-rouge">/api</code></li>
+    <li>Set the “Method” to <code class="highlighter-rouge">POST</code></li>
+    <li>Click “Add” next to “Body data” twice and fill out these keys and values:
+      <ul>
+        <li><code class="highlighter-rouge">name</code> : <code class="highlighter-rouge">Oscar</code></li>
+        <li><code class="highlighter-rouge">email</code> : <code class="highlighter-rouge">o@thegrouch.net</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Here’s a screenshot of what the test page looked like after clicking the “Fetch” button:</p>
+
+  <p><a href="images/hw5-test-page-post.png"><img src="images/hw5-test-page-post.png" class="screenshot" /></a></p>
+
+  <p>And here’s a screenshot of the updated spreadsheet:</p>
+
+  <p><a href="images/hw5-test-post-sheet-after.png"><img src="images/hw5-test-post-sheet-after.png" class="screenshot" /></a></p>
+
+</section>
+
+<section class="part">
+
+  <h2 id="extra-credit-implement-patch">EXTRA CREDIT: Implement PATCH</h2>
+
+  <p>When you send a PATCH request to <code class="highlighter-rouge">http://localhost:3000/api</code> with route parameters <strong><code class="highlighter-rouge">column-name/value</code></strong> <strong>and</strong> a message body in the format described below, your server will update the first row whose column value matches the given parameter, with the values as described in the message body.</p>
+
+  <p><strong>PATCH request details:</strong></p>
+
+  <ul>
+    <li>The message body will be a JavaScript object that represents the column values to update for the row.</li>
+    <li>The JavaScript object contains key-value pairs of the form <code class="highlighter-rouge">column: value</code></li>
+    <li>For example, you might have a PATCH request <code class="highlighter-rouge">http://localhost:3000/api/name/Oscar</code> with a message body that looks like:
+      <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"me@osc.ar"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+      </div>
+    </li>
+    <li>The JavaScript object will <strong>not necessarily</strong> contain every column in the spreadsheet.</li>
+    <li>You may assume that the message body keys are valid, i.e. the object only refers to columns that exist in the spreadsheet.</li>
+    <li>If there are multiple rows that match the given parameter, update the first matching row.</li>
+    <li>If there are no rows whose value matches the given parameter, you should still return a success response but the spreadsheet should not change.</li>
+    <li>For simplicity, you <strong>do not</strong> have to support case insensitivity; that is extra credit.</li>
+  </ul>
+
+  <p><strong>PATCH response:</strong></p>
+
+  <p>Your server should respond with a success message after updating the spreadsheet.</p>
+
+  <div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+  </div>
+
+  <hr />
+
+  <p><strong>Testing PATCH:</strong></p>
+
+  <p>This example assumes your spreadsheet looks like this:</p>
+
+  <p><a href="images/hw5-test-page-post.png"><img src="images/hw5-test-page-post.png" class="screenshot" /></a></p>
+
+  <p>Use the test page located at <code class="highlighter-rouge">http://localhost:3000/</code> to verify your result:</p>
+  <ul>
+    <li>Set the API path to <code class="highlighter-rouge">/api/name/Ernie</code></li>
+    <li>Set the “Method” to <code class="highlighter-rouge">PATCH</code></li>
+    <li>Click “Add” next to “Body data” twice and fill out these keys and values:
+      <ul>
+        <li><code class="highlighter-rouge">email</code> : <code class="highlighter-rouge">me@ernie.com</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>Here’s a screenshot of what the test page looked like after clicking the “Fetch” button:</p>
+
+  <p><a href="images/hw5-test-page-patch.png"><img src="images/hw5-test-page-patch.png" class="screenshot" /></a></p>
+
+  <p>And here’s a screenshot of the updated spreadsheet:</p>
+
+  <p><a href="images/hw5-test-patch-sheet-after.png"><img src="images/hw5-test-patch-sheet-after.png" class="screenshot" /></a></p>
+
+</section>
+
+<section class="part">
+
+  <h2 id="extra-credit-case-insensitive-search">EXTRA CREDIT: Case-insensitive search</h2>
+
+  <p>For extra credit, make your server support case-insensitive search for:</p>
+  <ul>
+    <li>DELETE</li>
+    <li>PATCH</li>
+    <li>POST</li>
+  </ul>
+
+  <p>The case insensitivity should be on the <strong>column</strong> name.</p>
+
+</section>
+
+<section class="part">
+
+  <h2 id="submit">Submit</h2>
+
+  <p>Upload your completed homework to your GitHub repository. However, this time <strong>you do not have to publish your page on GitHub</strong>, as this is a server and not a client-side web page.</p>
+
+  <p>Instead, please follow the instructions below to deploy your app to <a href="http://heroku.com">Heroku</a>.</p>
+
+  <h3 class="no_toc" id="deploy-to-heroku">Deploy to Heroku</h3>
+
+  <ul>
+    <li>Create a <a href="https://signup.heroku.com">free Heroku account</a>, if you don’t have one already</li>
+    <li>Once your account is created and verified, you can deploy your app by visiting the following link (of course, replace <code class="highlighter-rouge">&lt;YOUR-REPOSITORY-NAME&gt;</code> with the name of your repository, such as <code class="highlighter-rouge">hw5-sheets-mygithubname</code>):
+      <ul>
+        <li><code class="highlighter-rouge">https://heroku.com/deploy?template=https://github.com/yayinternet/&lt;YOUR-REPOSITORY-NAME&gt;</code></li>
+      </ul>
+    </li>
+    <li>When the page loads, click the purple “Deploy” button.</li>
+    <li>When the deployment finishes, you should see “Your app was successfully deployed.” Click the “View” button.
+      <ul>
+        <li>This will take you to your deployed app, which will look like <code class="highlighter-rouge">http://some-autogenerated-name.herokuapp.com</code></li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Trouble with deploying</strong></p>
+  <ul>
+    <li>If your deployment isn’t working, feel free to post to Piazza or come to office hours.</li>
+    <li>If you really can’t get it working, turn in your homework anyway; we are not requiring you to deploy to Heroku. However, deploying your app to Heroku will greatly help our TAs when grading, so please try your best to get it working.</li>
+  </ul>
+
+  <h3 class="no_toc" id="turn-in-homework">Turn in homework</h3>
+  <p>Turn in the link to your GitHub repository and Heroku app here:</p>
+  <ul>
+    <li><a href="https://goo.gl/forms/LuTWdK9S3510x5ys1">Submission Form</a></li>
+  </ul>
+
+</section>
+
+</article>
+
+        </section>
+       
+      </section>
+    </div>
+  </body>
+</html>
