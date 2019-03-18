@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CS193X: Web Programming Fundamentals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/syntax.css"/>
+  <script src="https://use.fontawesome.com/c63611dac2.js"></script>
+  <script src="../js/script.js" defer="true"></script>
+</head>
+
+  <body>
+    <div id="container" class="sidebar">
+      <section class="head">
+        <nav>
+          <ul>
+            <li  >
+              <a href="../syllabus" class="nav">Syllabus</a>
+            </li>
+            <li  >
+              <a href="../info" class="nav">Info</a>
+            </li>
+            <li  >
+              <a href="../staff" class="nav">Staff</a>
+            </li>
+          </ul>
+        </nav>
+        <section class="contents">
+          <a href="../" class="nav">
+            <h1>CS193X</h1>
+            Web Programming Fundamentals
+          </a>
+        </section>
+        <nav>
+          <ul>
+            <li>
+              <a href="http://piazza.com/stanford/spring2017/cs193x" class="nav">Piazza</a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+      <section class="main">
+        <nav>
+          <ul>
+            <li  class="active"  >
+              <a href="../lectures" class="nav">Lectures</a>
+            </li>
+            <li  >
+              <a href="../homework" class="nav">Homework</a>
+            </li>
+          </ul>
+        </nav>
+        <section>
+          <article>
+  <header>
+    
+    <h1>Lectures</h1>
+  </header>
+  <div>
+  
+<p>This page will contain the slides, notes, and example code pertaining to lecture.</p>
+
+<ul>
+  <li><a href="../syllabus">Tentative Course Schedule</a>: See the roadmap for the quarter.</li>
+  <li><a href="../install-node">NodeJS install instructions</a>: Follow these instructions to install NodeJS on your machine.</li>
+  <li><a href="../install-mongodb">MongoDB install instructions</a>: Follow these instructions to install MongoDb on your machine.</li>
+</ul>
+
+<hr />
+
+<h3 id="june-5-final-lecture-whats-next">June 5: FINAL LECTURE: What’s next?</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1dhrBx9TQg7m6_jtNDKpO9lBU6hqpH79ur-Uy9FmhLG8/edit#slide=id.p">Google slides</a> / <a href="27/lecture27.pdf">lecture27.pdf</a>
+    <ul>
+      <li>Important ideas we didn’t cover
+        <ul>
+          <li>Module bundling with <a href="http://browserify.org/">browserify</a></li>
+          <li>Older browser support with <a href="babeljs.io">babeljs</a></li>
+          <li>Testing</li>
+          <li>Accessibility</li>
+        </ul>
+      </li>
+      <li>Libraries and frameworks</li>
+      <li>Rants and general advice
+        <ul>
+          <li>Don’t use jQuery: prefer <a href="babeljs.io">babeljs</a></li>
+          <li>Don’t use Bootstrap: learn CSS</li>
+          <li>Pick a frontend framework and build something on it</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>No lecture on Wednesday:</strong> Work on your final project!</li>
+</ul>
+
+<hr />
+<h3 id="june-2-middleware-data-modeling-authentication">June 2: Middleware; Data modeling; Authentication</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1W3B68eT5fqYJJncCzWiAA3IRfNEywbJJ1elCjGecFlM/edit#slide=id.p">Google slides</a> / <a href="26/lecture26.pdf">lecture26.pdf</a>
+    <ul>
+      <li>Middleware and Routes</li>
+      <li>Single-page web app</li>
+      <li>More MongoDB examples</li>
+      <li>Authentication</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/module-examples">Modules and Routes</a></li>
+      <li><a href="https://github.com/yayinternet/cross-stitch-examples">Cross-stitch examples</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-31-templates-modules-and-routers">May 31: Templates, Modules, and Routers</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/12ReR7wEcABB6uYm027hlEisiGfEHFm_dHBlkFTlKf84/edit#slide=id.p">Google slides</a> / <a href="25/lecture25.pdf">lecture25.pdf</a>
+    <ul>
+      <li>Web application architecture
+        <ul>
+          <li>Multi-page web apps (server-side rendering)</li>
+          <li>Templates with Handlebars</li>
+        </ul>
+      </li>
+      <li>NodeJS Modules</li>
+      <li>Express Router</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/mongodb-examples">MongoDB examples repo</a></li>
+      <li><a href="https://github.com/yayinternet/module-examples">Modules and Routes</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-29-no-lecture">May 29: NO LECTURE</h3>
+
+<hr />
+
+<h3 id="may-26-mongodb-and-nodejs">May 26: MongoDB and NodeJS</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1gbWIwZl0cMyU2u5pEm-_ny148fgcbmxofpuh0gnKkfg/edit">Google slides</a> / <a href="24/lecture24.pdf">lecture24.pdf</a>
+    <ul>
+      <li>MongoDB and NodeJS
+        <ul>
+          <li>insert, find, delete, update, upsert</li>
+          <li><code class="highlighter-rouge">ObjectID</code></li>
+        </ul>
+      </li>
+      <li>Web application architecture
+        <ul>
+          <li>Multi-page web apps (server-side rendering)</li>
+          <li>Single-page web apps</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/mongodb-examples">MongoDB examples repo</a></li>
+    </ul>
+  </li>
+  <li><a href="../final-project">Final Project</a> <span class="label">FINAL PROJECT ASSIGNED</span></li>
+</ul>
+
+<h3 id="may-24-mongodb">May 24: MongoDB</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1MzDFD7cqtSZVXIRS43LLMZmBPuCPaf0UC9WJVbzFcxE/edit">Google slides</a> / <a href="23/lecture23.pdf">lecture23.pdf</a>
+    <ul>
+      <li>MongoDB
+        <ul>
+          <li><code class="highlighter-rouge">mongo</code> / <code class="highlighter-rouge">mongod</code></li>
+          <li>CRUD operations</li>
+        </ul>
+      </li>
+      <li>MongoDB and NodeJS</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/mongodb-examples">MongoDB examples repo</a></li>
+    </ul>
+  </li>
+  <li><strong>MongoDB Installation</strong>
+    <ul>
+      <li><a href="../install-mongodb">Instructions</a>: Follow these instructions to install MongoDB on your machine. This will be necessary to run lecture examples.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-22-saving-data-mongodb-intro">May 22: Saving data; MongoDB intro</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1fFRruBk95sMSK5n-XUtoxGxvWKz4rdWIC0xmTUEiZPg/edit">Google slides</a> / <a href="22/lecture22.pdf">lecture22.pdf</a>
+    <ul>
+      <li>Saving data
+        <ul>
+          <li>POST body</li>
+          <li><code class="highlighter-rouge">body-parser</code></li>
+        </ul>
+      </li>
+      <li>Saving to a file</li>
+      <li>MongoDB: Saving to a database</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/mongodb-examples">MongoDB examples repo</a></li>
+      <li><a href="https://github.com/yayinternet/lecture21">Lecture 21 GitHub repo</a></li>
+      <li><a href="https://github.com/yayinternet/lecture20">Lecture 20 GitHub repo</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="may-19-async--await-more-express-more-fetch">May 19: <code class="highlighter-rouge">async / await</code>; more Express; more <code class="highlighter-rouge">fetch()</code></h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1rRqvb3F77Cmqb6FS0LmqSLkzH9S8Q8hRrUdZw_oybb0/edit">Google slides</a> / <a href="21/lecture21.pdf">lecture21.pdf</a>
+    <ul>
+      <li><code class="highlighter-rouge">async / await</code></li>
+      <li>Sending data to the server</li>
+      <li>Returning JSON from Express</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/lecture21">Lecture 21 GitHub repo</a></li>
+      <li><a href="https://github.com/yayinternet/lecture20">Lecture 20 GitHub repo</a></li>
+    </ul>
+  </li>
+  <li><a href="../homework/5-sheets">Homework 5</a> <span class="label">HW5 assigned</span></li>
+</ul>
+
+<h3 id="may-17-more-express-fetch-and-localhost">May 17: More Express; <code class="highlighter-rouge">fetch()</code> and localhost</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1X-tllkD1rsnx80kIzSxCD9N43nr8Hyuca5ukg5EeMkE/edit">Google slides</a> / <a href="20/lecture20.pdf">lecture20.pdf</a>
+    <ul>
+      <li><code class="highlighter-rouge">npm</code></li>
+      <li>Express</li>
+      <li><code class="highlighter-rouge">fetch()</code> to localhost</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/lecture19">Lecture 19 GitHub repo</a></li>
+      <li><a href="https://github.com/yayinternet/lecture20">Lecture 20 GitHub repo</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-15-servers-nodejs-and-express">May 15: Servers, NodeJS and Express</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1OwcbHRnvPR3MRmfdz3jeD6gvjC_3dx8FG-BGgQ_0S_g/edit#slide=id.g1dfc152969_0_553">Google slides</a> / <a href="19/lecture19.pdf">lecture19.pdf</a>
+    <ul>
+      <li>Servers in general</li>
+      <li>NodeJS</li>
+      <li><code class="highlighter-rouge">npm</code></li>
+      <li>Express</li>
+      <li>fetch() to localhost</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/lecture19">Lecture 19 GitHub repo</a></li>
+    </ul>
+  </li>
+  <li><strong>Node Installation</strong>
+    <ul>
+      <li><a href="../install-node">Instructions</a>: Follow these instructions to install NodeJS on your machine. This will be necessary to run lecture examples, to complete HW5 and to complete the final project. (Thanks to our TA Zach Maurer for writing these awesome instructions!)</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<h3 id="may-12-more-fetch-javascript-event-loop">May 12: More Fetch; JavaScript Event Loop</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1whs6hJ6oBNKfVEwExf7dq8AnD8W4WAqzb5wMcI5GqQQ/edit#slide=id.p">Google slides</a> / <a href="18/lecture18.pdf">lecture18.pdf</a>
+    <ul>
+      <li>More Fetch API:
+        <ul>
+          <li>Querying 3rd-party REST APIs</li>
+          <li>Submitting forms</li>
+          <li>CORS</li>
+        </ul>
+      </li>
+      <li>Asynchrony in JavaScript</li>
+      <li>JavaScript event loop</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/lecture17/tree/master/spotify-albums">Fetch from Spotify</a> / <a href="https://yayinternet.github.io/lecture17/spotify-albums/spotify-discography.html">demo</a></li>
+      <li>Form elements JS syntax: <a href="https://codepen.io/bee-arcade/pen/963ae17d61f828a7b5c321c148b84e40?editors=1011">select</a>, <a href="https://codepen.io/bee-arcade/pen/bd301158f62a54e40eea37da1aff0d7a?editors=1011">textarea</a>, <a href="https://codepen.io/bee-arcade/pen/714933b816bf4f91a6ae4ab8eba6b649?editors=1011">checkbox</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-10-fetch-api-and-json-3rd-party-apis">May 10: Fetch API and JSON; 3rd-party APIs</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1Rim3-IXt6yN7yny_SBv7B5NMBiYbaQEiRMUD5s66uN8/edit#slide=id.g219bfd85d1_1_32">Google slides</a> / <a href="17/lecture17.pdf">lecture17.pdf</a>
+    <ul>
+      <li>Fetch API and JSON</li>
+      <li>Fetch in a class</li>
+      <li>REST APIs
+        <ul>
+          <li>HTTP Methods: GET</li>
+          <li>Query parameters</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://github.com/yayinternet/lecture17">GitHub repo</a> / <a href="https://yayinternet.github.io/lecture17/">live</a>: Several examples of Fetch API
+        <ul>
+          <li><a href="https://github.com/yayinternet/lecture17/tree/master/oo-albums">Fetch from a class</a> / <a href="https://yayinternet.github.io/lecture17/oo-albums/discography.html">demo</a></li>
+          <li><a href="https://github.com/yayinternet/lecture17/tree/master/spotify-albums">Fetch from Spotify</a> / <a href="https://yayinternet.github.io/lecture17/spotify-albums/spotify-discography.html">demo</a></li>
+        </ul>
+      </li>
+      <li>Form elements JS syntax: <a href="https://codepen.io/bee-arcade/pen/963ae17d61f828a7b5c321c148b84e40?editors=1011">select</a>, <a href="https://codepen.io/bee-arcade/pen/bd301158f62a54e40eea37da1aff0d7a?editors=1011">textarea</a>, <a href="https://codepen.io/bee-arcade/pen/714933b816bf4f91a6ae4ab8eba6b649?editors=1011">checkbox</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-8-fetch-api-promises">May 8: Fetch API, Promises</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/16uIU-dQrX6iBleAB9J_r9KyhUwfucCZF2wRGCi8EIAo/edit#slide=id.p">Google slides</a> / <a href="16/lecture16.pdf">lecture16.pdf</a>
+    <ul>
+      <li>Finish functional JS
+        <ul>
+          <li>Currying</li>
+          <li>Anonymous functions</li>
+          <li>Closures</li>
+        </ul>
+      </li>
+      <li>Fetch API
+        <ul>
+          <li><code class="highlighter-rouge">fetch()</code></li>
+          <li>Promises and <code class="highlighter-rouge">.then()</code></li>
+        </ul>
+      </li>
+      <li>JSON</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+<h3 id="may-5-callbacks-functional-javascript">May 5: Callbacks; Functional JavaScript</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1bfXbmli-eYiKJPrc1PB-p_WaqggLUIF7oO1KqsjZbKc/edit">Google slides</a> / <a href="15/lecture15.pdf">lecture15.pdf</a>
+    <ul>
+      <li>Callbacks</li>
+      <li>Functional JavaScript
+        <ul>
+          <li>Closures</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://codepen.io/bee-arcade/pen/78575ded5baba8aa15642037c298d9b4?editors=0010">Button example</a>: Communicating between two classes (<code class="highlighter-rouge">Button</code> to <code class="highlighter-rouge">Menu</code>) with callbacks</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-3-custom-events-this-and-bind-first-class-functions">May 3: Custom events, <code class="highlighter-rouge">this</code>, and <code class="highlighter-rouge">bind</code>; first-class functions</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1B8uwQt5OD-GJ4-OJvWfuqXfvSGKiqhy1Lgnsq9h_tqI/edit">Google slides</a> / <a href="14/lecture14.pdf">lecture14.pdf</a>
+    <ul>
+      <li>Custom events example</li>
+      <li><code class="highlighter-rouge">this</code> keyword / <code class="highlighter-rouge">bind()</code></li>
+      <li>First-class functions</li>
+      <li>Callbacks</li>
+    </ul>
+  </li>
+  <li><strong>Code</strong>
+    <ul>
+      <li><a href="https://codepen.io/bee-arcade/pen/b0ae765cc6ccf3187c03afda2b2e085c?editors=0010">Button example</a>: Communicating between two classes (<code class="highlighter-rouge">Button</code> to <code class="highlighter-rouge">Menu</code>) with custom events</li>
+      <li><a href="https://codepen.io/bee-arcade/pen/b0c1f3c17814ba31d99c1e72a46b46e2?editors=1011"><code class="highlighter-rouge">this</code> mystery 1</a>: See how <code class="highlighter-rouge">this</code> changes in different contexts</li>
+      <li><a href="https://codepen.io/bee-arcade/pen/d214bea753753099d49774157b98a71b?editors=0011"><code class="highlighter-rouge">this</code> mystery 2</a>: See how <code class="highlighter-rouge">this</code> changes in different contexts</li>
+      <li><a href="https://codepen.io/bee-arcade/project/editor/XqGzeD/">Present example</a>: Communicating between two classes (<code class="highlighter-rouge">Present</code> to <code class="highlighter-rouge">App</code>) via callbacks</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="may-1-more-es6-classes-this-and-bind">May 1: More ES6 classes; <code class="highlighter-rouge">this</code> and <code class="highlighter-rouge">bind</code></h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1E2CvOxrtxF9clb3xqlyWAVX1x5q0YNk6t08Iteb9W_Y/edit">Google slides</a> / <a href="13/lecture13.pdf">lecture13.pdf</a>
+    <ul>
+      <li>More ES6 classes</li>
+      <li><code class="highlighter-rouge">this</code> keyword / <code class="highlighter-rouge">bind()</code></li>
+      <li>Communicating between classes
+        <ul>
+          <li>Custom events</li>
+        </ul>
+      </li>
+      <li>JavaScript application architecture</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="apr-28-css-animations-es6-classes">Apr 28: CSS Animations; ES6 classes</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1vIHDuMfLgeXWDlHy3SrZn2YDaqHwP4l2RhWHAk_jUq8/edit#slide=id.p">Google slides</a> / <a href="12/lecture12.pdf">lecture12.pdf</a>
+    <ul>
+      <li>Keyboard events</li>
+      <li>Pointer events</li>
+      <li>Animations</li>
+      <li>Intro ES6 classes</li>
+    </ul>
+  </li>
+  <li><strong>Code:</strong> (see more in slide deck)
+    <ul>
+      <li><a href="https://codepen.io/bee-arcade/pen/dd65e0fc478dac692c0874618eab9d36?editors=1011">Dragon walk</a>: Codepen example of dragging a dragon along the x-axis</li>
+      <li><a href="https://codepen.io/bee-arcade/pen/6a7de5577263dfc389605d19b33881f1">2D dragon walk</a></li>
+      <li><a href="https://codepen.io/bee-arcade/project/editor/ZBEqmD/">OO present with bind</a> / <a href="https://codepen.io/bee-arcade/project/live/ZBEqmD/">live</a>: Object-oriented Present example</li>
+      <li><a href="https://codepen.io/bee-arcade/project/editor/AbJmLA/">OO photo album</a> / <a href="https://codepen.io/bee-arcade/project/live/AbJmLA/">live</a>: Object-oriented Photo Album example</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="apr-26-keyboard-mouse-and-touch-events">Apr 26: Keyboard, Mouse, and Touch events</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/19I7jtXPQGfOYBRc7PdwpaTWVqOgclNHCE2odkd9-gGQ/edit#slide=id.p">Google slides</a> / <a href="11/lecture11.pdf">lecture11.pdf</a>
+    <ul>
+      <li>Keyboard events</li>
+      <li>Pointer events</li>
+      <li>Animations</li>
+    </ul>
+  </li>
+  <li><strong>Code:</strong>
+    <ul>
+      <li><a href="11/key-events.html">key-events.html</a>: Prints out keyboard events in the Web Console.</li>
+      <li><a href="11/photos-start.html">photos-start.html</a>: Starter code for our photos example.</li>
+      <li><a href="11/photos-desktop-finished.html">photos-desktop-finished.html</a>: Finished photo album example with keyboard navigation</li>
+      <li><a href="11/photos-mobile-finished.html">photos-mobile-finished.html</a>: Finished photo album example with swipe left/right navigation</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="apr-24-more-javascript-events">Apr 24: More JavaScript events</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1UWuchBk2aU1Qvq6VjW-AQAuFXs0XYHK2T1cVA_8v7Bo/edit#slide=id.p">Google slides</a> / <a href="10/lecture10.pdf">lecture10.pdf</a>
+    <ul>
+      <li>Event propagation: bubbling and capturing</li>
+      <li>Finish case study</li>
+      <li><code class="highlighter-rouge">data-*</code> attributes</li>
+      <li>Mischief and hacks</li>
+    </ul>
+  </li>
+  <li><strong>Code:</strong>
+    <ul>
+      <li><a href="10/display-toggle.html">display-toggle.html</a>: Display toggle. Shows how clicking an inner element fires the click event on the outer element.</li>
+      <li><a href="10/bubbling.html">bubbling.html</a>: Event bubbling example. See slides for more variants.</li>
+      <li><a href="10/empty-extension.zip">empty-extension.zip</a>: Empty extension that does nothing but print a log message</li>
+      <li><a href="10/quora-extension.zip">quora-extension.zip</a>: Extension that removes the Quora login nag screen</li>
+      <li><a href="10/adblock-block-block.zip">adblock-block-block.zip</a>: Extension that unblocks <a href="https://chrome.google.com/webstore/detail/adblock/gighmmpiobklfepjocnamgkkbiglidom">Adblock</a> on <a href="www.ondemandkorea.com">OnDemandKorea</a></li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="apr-21-more-dom-case-study">Apr 21: More DOM; case study</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1MZ6TMztOyLP000b6VlHjLTVLOAXCPfiCoXPAxZ6q0DQ/edit#slide=id.g1dd384a22c_0_101">Google slides</a> / <a href="09/lecture09.pdf">lecture09.pdf</a>
+    <ul>
+      <li>Adding and removing elements from DOM</li>
+      <li>Case Study: tic-tac-toe</li>
+      <li>Traversing the DOM</li>
+    </ul>
+  </li>
+  <li><strong>Code:</strong>
+    <ul>
+      <li><a href="09/dom-walk-script.js">dom-walk-script.js</a> / <a href="09/dom-walk.html">html</a>: Recursively prints out every DOM element of the HTML page.</li>
+      <li><a href="09/tictactoe.js">tictactoe.js</a> / <a href="09/tictactoe.html">html</a> / <a href="09/tictactoe.css">css</a>: Simple tic-tac-toe game</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="apr-19-dom-and-events">Apr 19: DOM and events</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1FO1B6oVLYazYFFBV-EREdX9MVhp3w-wFJC5lk3LlaHQ/edit#slide=id.p">Google slides</a> / <a href="08/lecture08.pdf">lecture08.pdf</a>
+    <ul>
+      <li>Finish language feature tour</li>
+      <li>DOM: Document Object Model</li>
+      <li>Basic event handling</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="apr-17-introduction-to-javascript">Apr 17: Introduction to JavaScript</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1gc1ef_r_DCPWCXe_AS3czzstk6d5U9yLB3YeqWmXVhQ/edit#slide=id.p">Google slides</a> / <a href="07/lecture07.pdf">lecture07.pdf</a>
+    <ul>
+      <li>What is JavaScript?</li>
+      <li>Language feature tour</li>
+    </ul>
+  </li>
+  <li><strong>Code:</strong>
+    <ul>
+      <li><a href="07/first-js.html">first-js.html</a> / <a href="07/script.js">script.js</a>: A button with a simple event handler.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="apr-14-position-mobile-web">Apr 14: <code class="highlighter-rouge">position</code>; Mobile web</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1C1_y51AGjiH1k76pxpkYYwh3E9Ah7fm_8SvySpoBvhs/edit#slide=id.p">Google slides</a> / <a href="06/lecture06.pdf">lecture06.pdf</a>
+    <ul>
+      <li><code class="highlighter-rouge">position</code></li>
+      <li>Useful <code class="highlighter-rouge">background-image</code> properties</li>
+      <li>Mobile CSS</li>
+      <li><strong>Skipped but useful:</strong> <code class="highlighter-rouge">em</code> and <code class="highlighter-rouge">rem</code></li>
+    </ul>
+  </li>
+  <li><strong>Code:</strong>
+    <ul>
+      <li><a href="06/mobile.html">mobile.html</a> / <a href="06/style.css">css</a>: Our first mobile web example.</li>
+      <li><a href="06/squarespace-mobile.html">squarespace-mobile.html</a> / <a href="06/squarespace-mobile-style.css">css</a>: The mobile version of our Squarespace layout.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="apr-12-more-flexbox-and-layout">Apr 12: More flexbox and layout</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/11hBjf4dq1WMdAgyM4-p0xPOo2geGble7yy_R6NXmde4/edit?usp=sharing">Google slides</a> / <a href="05/lecture05.pdf">lecture05.pdf</a>
+    <ul>
+      <li>More flexbox: shrink and grow</li>
+      <li><code class="highlighter-rouge">height</code>/<code class="highlighter-rouge">width</code> percentage quirks: <code class="highlighter-rouge">vh</code>/<code class="highlighter-rouge">vw</code> and <code class="highlighter-rouge">box-sizing</code></li>
+    </ul>
+  </li>
+  <li><a href="05/block-inline">Block vs inline guide</a>: review if necessary</li>
+  <li><strong>Code:</strong>
+    <ul>
+      <li><a href="05/squarespace.html">squarespace.html</a> / <a href="05/style.css">css</a>: A rough copy of the <a href="https://bedford-demo.squarespace.com">Bedford</a> Squarespace template. Be sure to inspect elements and view the source to see how it works!</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="apr-10-flexbox">Apr 10: Flexbox</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1-RHZWIQ4kORqgVdXoYqbu2RseSZqznQLqHGXE7C4fk8/edit#slide=id.p">Google slides</a> / <a href="04/lecture04.pdf">lecture04.pdf</a>
+    <ul>
+      <li>Finish up Box Model</li>
+      <li>Debugging with Chrome Inspector</li>
+      <li><strong>Case study:</strong> Squarespace layout
+        <ul>
+          <li><code class="highlighter-rouge">display: flex;</code></li>
+          <li>Google Fonts</li>
+          <li>Background images</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="../homework/1-listicle">Homework 1</a> <span class="label">HW1 assigned</span></li>
+</ul>
+
+<hr />
+
+<h3 id="apr-7-more-css-css-box-model">Apr 7: More CSS; CSS Box Model</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1w3q6g-gJ_DeBZCUzz6E0VBQ9fVzJk7wYC5ouU6fX0KU/edit#slide=id.p">Google slides</a> / <a href="03/lecture03.pdf">lecture03.pdf</a>
+    <ul>
+      <li>HTML history and standard HTML</li>
+      <li>Combining selectors; cascading; inheritance</li>
+      <li>Box model</li>
+    </ul>
+  </li>
+  <li><span class="label">HW0 DUE</span> <strong><a href="../homework/0-welcome">HW0 due</a> at 11:59pm</strong></li>
+</ul>
+
+<h3 id="apr-5-block-vs-inline-classes-and-ids">Apr 5: Block vs inline; classes and ids</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/1OGSEAeWlZ9CSUi5xr73dnx3esIPS_FV4xtsBThmcV2I/edit#slide=id.p">Google slides</a> / <a href="02/lecture02.pdf">lecture02.pdf</a>
+    <ul>
+      <li>Block vs inline</li>
+      <li><code class="highlighter-rouge">div</code> and <code class="highlighter-rouge">span</code></li>
+      <li><code class="highlighter-rouge">class</code>es and <code class="highlighter-rouge">id</code>s</li>
+      <li><a href="05/block-inline">Block vs inline guide</a></li>
+    </ul>
+  </li>
+  <li>Code: <a href="http://codepen.io/bee-arcade/pen/a3dbe970375f87f8330bfb2c303e5cc8/">Course webpage</a></li>
+</ul>
+
+<h3 id="apr-3-course-overview-and-basic-htmlcss">Apr 3: Course overview and basic HTML/CSS</h3>
+<ul>
+  <li><strong>Slides:</strong> <a href="https://docs.google.com/presentation/d/16Cx_pRg9a4stSVlhH1HcwXMaQwYm0-GtxuGhLi18m-s/edit#slide=id.p">Google slides</a> / <a href="01/lecture01.pdf">lecture01.pdf</a>
+    <ul>
+      <li>Syllabus and course info</li>
+      <li>HTML and CSS basics: syntax; element selector</li>
+    </ul>
+  </li>
+  <li><a href="../homework/0-welcome">Homework 0</a> <span class="label">HW0 assigned</span></li>
+</ul>
+
+</div>
+
+</article>
+
+        </section>
+       
+      </section>
+    </div>
+  </body>
+</html>
