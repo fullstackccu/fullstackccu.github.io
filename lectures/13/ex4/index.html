@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>Two classes: App and PresentContainer</title>
-    <link rel="stylesheet" href="styles/index.css">
-    <script src="scripts/present-sources.js" defer></script>
-    <script src="scripts/present.js" defer></script>
-    <script src="scripts/app.js" defer></script>
-    <script src="scripts/main.js" defer></script>
+    <meta charset="utf-8">
+    <title>Photo album (mobile)</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/photo.css">
+    <link rel="stylesheet" href="css/photo-mobile.css">
+    <script src="js/photo-list.js" defer></script>
+    <script src="js/thumbnail.js" defer></script>
+    <script src="js/modal-photo.js" defer></script>
+    <script src="js/modal-screen.js" defer></script>
+    <script src="js/album.js" defer></script>
+    <script src="js/main.js" defer></script>
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
   </head>
   <body>
-    <h1 id="title">Click a present to open it:</h1>
-    <div id="presents"></div>
+    <h1>Pizzas I like</h1>
+
+    <section id="album-view">
+    </section>
+
+    <section id="modal-view" class="hidden" touch-action="none">
+    </section>
+
   </body>
 </html>
-
