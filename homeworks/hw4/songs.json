@@ -1,0 +1,32 @@
+{
+  "鹹豆漿": {
+    "songUrl": "https://fullstackccu.github.io/homeworks/hw4/songs/TCM011.mp3",
+    "title": "恆春兮工商服務【鹹豆漿】",
+    "artist": "艺术家"
+  },
+  "測速器": {
+    "songUrl": "https://fullstackccu.github.io/homeworks/hw4/songs/TCM012.mp3",
+    "title": "恆春兮工商服務【東榮牌測速器】",
+    "artist": "東榮牌"
+  },
+  "檳榔": {
+    "songUrl": "https://fullstackccu.github.io/homeworks/hw4/songs/TCM013.mp3",
+    "title": "恆春兮工商服務【檳榔】",
+    "artist": "恆春兮"
+  },
+  "點仔膠": {
+    "songUrl": "https://fullstackccu.github.io/homeworks/hw4/songs/TCM014.mp3",
+    "title": "恆春兮工商服務【東榮牌點仔膠】",
+    "artist": "東榮牌"
+  },
+  "夫妻": {
+    "songUrl": "https://fullstackccu.github.io/homeworks/hw4/songs/TCM015.mp3",
+    "title": "恆春兮工商服務【夫妻】",
+    "artist": "恆春兮"
+  },
+  "減肥刀": {
+    "songUrl": "https://fullstackccu.github.io/homeworks/hw4/songs/TCM016.mp3",
+    "title": " 恆春兮工商服務【東榮牌減肥刀】",
+    "artist": "肥刀"
+  }
+}
