@@ -18,10 +18,13 @@ class App {
 
     this.albumUrls = [];
     fetch(SPOTIFY_PATH + query,
-    		{"Accept": "application/json",
-	     "Content-Type": "application/json",
-	     "Authorization": "Bearer BQC5d8HVSbS0ZXcumz9VwyzvUmsSOEigs6-y4fyzEODyKP1scF5oiQZzLqetcsOSRT9fB1Wo61VuTexIVIfli711LlKCihZBl_xqjoiknTUkulfhwUi3j0JwsZWGnSZ7GBxelQvIbXEbNQM5Z-VDMbmK8_fDtHx696e3peyJyKcVOW1W6B8"
-		    }
+	    	{ method: "GET",
+	          headers: {
+	    	    "Accept": "application/json",
+		        "Content-Type": "application/json",
+		       "Authorization": "Bearer BQC5d8HVSbS0ZXcumz9VwyzvUmsSOEigs6-y4fyzEODyKP1scF5oiQZzLqetcsOSRT9fB1Wo61VuTexIVIfli711LlKCihZBl_xqjoiknTUkulfhwUi3j0JwsZWGnSZ7GBxelQvIbXEbNQM5Z-VDMbmK8_fDtHx696e3peyJyKcVOW1W6B8"
+			   }
+	    	}
          )
         .then(this._onResponse)
         .then(this._onJsonReady);
