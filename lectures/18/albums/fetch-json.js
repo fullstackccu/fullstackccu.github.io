@@ -17,6 +17,6 @@ function onResponse(response) {
   return response.json();
 }
 
-fetch('https://fullstackccu.github.io/lectures/18/albums/albums.json')
+fetch('https://web.stanford.edu/class/cs193x/lectures/18/albums.json')
     .then(onResponse)
     .then(onJsonReady);
