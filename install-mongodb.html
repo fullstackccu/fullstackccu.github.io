@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+ 
+
+
+<head>
+  <meta charset="utf-8">
+  <title>CS193X: Web Programming Fundamentals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/syntax.css"/>
+  <script src="https://use.fontawesome.com/c63611dac2.js"></script>
+  <script src="../js/script.js" defer="true"></script>
+</head>
+
+  <body>
+    <div id="container" class="full">
+      <section class="head">
+        <nav>
+          <ul>
+            <li>
+              <a href="../" class="nav">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Back
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <header>
+          
+          <h1>Installing MongoDb</h1>
+        </header>
+      </section>
+      <section class="main">
+        <section>
+          <article>
+  
+<p>This tutorial has sections covering the following topics:</p>
+
+<ul id="markdown-toc">
+  <li><a href="#macos-installing-mongodb" id="markdown-toc-macos-installing-mongodb">MacOS: Installing MongoDb</a></li>
+</ul>
+
+<ul>
+  <li><strong>Windows:</strong> Instructions coming soon. Try following the <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/">instructions provided by MongoDB</a>.</li>
+  <li><strong>Linux:</strong> We assume you can figure this out yourself. See <a href="https://docs.mongodb.com/manual/administration/install-on-linux/">MongoDB site</a>.</li>
+</ul>
+
+<p>If you have any trouble installing MongoDB, please <a href="http://piazza.com/stanford/spring2017/cs193x">post to Piazza</a>.</p>
+
+<section class="part">
+
+  <h2 id="macos-installing-mongodb">MacOS: Installing MongoDb</h2>
+
+  <p>We will be mostly following the instructions from the <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#install-mongodb-community-edition-with-homebrew">MongoDB website</a></p>
+
+  <h3 class="no_toc" id="install-homebrew">1) Install Homebrew</h3>
+
+  <p><a href="https://brew.sh/">Homebrew</a> is a package manager for MacOS that allows you to install command-line tools for Mac, similar to npm for NodeJS.</p>
+
+  <p>First install Homebrew if you don’t have it already.</p>
+
+  <p>Run the following in a terminal:</p>
+
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>/usr/bin/ruby -e <span class="s2">"</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">"</span>
+</code></pre>
+  </div>
+
+  <h3 class="no_toc" id="install-mongodb">2) Install MongoDB</h3>
+
+  <p>Now install MongoDB via Homebrew.</p>
+
+  <p>Run the following in a terminal:</p>
+
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code>brew install mongodb
+</code></pre>
+  </div>
+
+  <h3 class="no_toc" id="create-datadb">3) Create <code class="highlighter-rouge">/data/db</code></h3>
+
+  <p>The databases you create on your local machine via MongoDB will be stored by default in a directory called <code class="highlighter-rouge">/data/db</code>. You will need to <a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/#create-the-data-directory">create this directory</a>. Since it is a directory on root, you will need superuser permissions to create this directory.</p>
+
+  <p>Run the following command in a terminal (don’t forget the first slash):</p>
+
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo mkdir -p /data/db/
+</code></pre>
+  </div>
+
+  <h3 class="no_toc" id="fix-the-permissions-for-datadb">4) Fix the permissions for <code class="highlighter-rouge">/data/db</code></h3>
+
+  <p>Run the following command in a terminal (don’t forget the first slash):</p>
+
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>sudo chown -R <span class="nv">$USER</span> /data/db
+</code></pre>
+  </div>
+
+  <h3 class="no_toc" id="try-running-mongod-and-accept-incoming-connections">5) Try running <code class="highlighter-rouge">mongod</code> and accept incoming connections.</h3>
+
+  <p>Now try running <code class="highlighter-rouge">mongod</code>:</p>
+
+  <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mongod
+</code></pre>
+  </div>
+
+  <p>This should start up the MongoDB server process until you kill it via Command-C.</p>
+
+  <p>If you get prompted on whether to accept incoming connections, <strong>you should</strong>.</p>
+
+</section>
+
+</article>
+
+        </section>
+       
+      </section>
+    </div>
+  </body>
+</html>
