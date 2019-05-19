@@ -1,3 +1,4 @@
+#!/usr/bin/node
 function printPoem() {
   console.log('Roses are red,');
   console.log('Violets are blue,');

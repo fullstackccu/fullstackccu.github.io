@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html>
- 
-
 
 <head>
   <meta charset="utf-8">
-  <title>CS193X: Web Programming Fundamentals</title>
+  <title>4102165: Full Stack Web Development Fundamentals</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
   <link rel="stylesheet" href="../css/style.css"/>
@@ -20,7 +18,7 @@
         <nav>
           <ul>
             <li>
-              <a href="../homework" class="nav">
+              <a href="../homeworks/index.html" class="nav">
                 <i class="fa fa-arrow-left" aria-hidden="true"></i>
                 Back
               </a>
@@ -46,13 +44,9 @@
 
 <p>You will notice that this assignment involves a lot more non-coding steps compared to the previous homeworks. That is because setting up and deploying a backend often involves a lot of non-coding tasks. For example, we walk you through creating a Google Service Account, which you would also need to do to use Google Cloud. To compensate for the tricky setup, though, we tried to streamline the coding requirement: You are only required to complete 3 functions.</p>
 
-<p><strong>This assignment requires a fair amount of setup.</strong> Please try to get through the steps marked “SETUP:” by <strong>May 26</strong> so that the course staff can assist you in person before the holiday weekend if necessary.</p>
+<p><strong>This assignment requires a fair amount of setup.</strong> Please try to get through the steps marked “SETUP:” by <strong>May 27</strong> so that the course staff can assist you in person before the holiday weekend if necessary.</p>
 
-<p><span class="label">Due Date:</span> Wed, May 31, 2017 at 11:59pm <em>(late cutoff: Thu, June 1, 2017 at 11:59pm)</em><br />
-<strong>NOTE:</strong> We changed the due date to 5/31, but the late cutoff is still the same (6/1).<br />
-<span class="label">Setup steps:</span> We strongly suggest you complete the steps marked “SETUP:” by Thursday, May 26, so that we can assist you well ahead of time if you need help. We do not guarantee to be available for troubleshooting setup issues over the holiday weekend.<br />
-<span class="label">HW5 Turn-in:</span> <a href="https://goo.gl/forms/LuTWdK9S3510x5ys1">Submission Form</a></p>
-
+<p><span class="label">Due Date:</span> Mon Jan 3, 2019 at 11:59pm<br />
 <hr />
 
 <ul id="markdown-toc">
@@ -76,14 +70,12 @@
   <h3 class="no_toc" id="accept-the-hw5-assignment">1. Accept the HW5 assignment</h3>
 
   <ul>
-    <li><a href="https://classroom.github.com/assignment-invitations/6cd338ce368a3ff93b1555bc2f4d67bb">Follow this link</a>, where HW5 is stored on GitHub Classroom.</li>
+    <li><a href="https://classroom.github.com/a/ENaAtuvK">Follow this link</a>, where HW5 is stored on GitHub Classroom.</li>
     <li>Accept the homework and download the starter code as you did in <a href="../homework/0-welcome">Homework 0</a>.</li>
   </ul>
 
-  <h3 class="no_toc" id="install-node-v7">2. Install Node v7</h3>
-
-  <p><strong>NOTE: You may need to reinstall Node!</strong> An earlier version of the <a href="../install-node">Node Installation instructions</a> had you downloaded Node v6 instead of v7. Since we want you to use <code class="highlighter-rouge">async</code> functions, which are only available in Node v7+, we need you to <strong>reinstall</strong> Node and download Version 7.10 / the “Current: Latest Features” installer instead.</p>
-
+  <h3 class="no_toc" id="install-node-v7">2. Install Node v10</h3>
+  
   <ul>
     <li>Follow the <a href="../install-node">Node Installation instructions</a>.</li>
     <li>Make sure you have the right version of <code class="highlighter-rouge">node</code> by running <code class="highlighter-rouge">node -v</code> in your terminal. You should see v7.10:
@@ -137,7 +129,7 @@
 <a href="images/hw5-gsa-create-project.png"><img src="images/hw5-gsa-create-project.png" class="screenshot" /></a></li>
     <li>You may get a dialog message that looks like the one below. If you do, click “Create”.
 <a href="images/hw5-gsa-weird-dialog.png"><img src="images/hw5-gsa-weird-dialog.png" class="screenshot" /></a></li>
-    <li>Enter any project name, such as “CS193x HW5.”
+    <li>Enter any project name, such as “4102165 HW5.”
 <a href="images/hw5-gsa-new-project.png"><img src="images/hw5-gsa-new-project.png" class="screenshot" /></a></li>
     <li>You will see an <a href="images/hw5-gsa-new-project-loading.png">intermediate loading screen</a>, then it will take you back to the Google Sheets API page.
 <a href="images/hw5-gsa-sheets-api-again.png"><img src="images/hw5-gsa-sheets-api-again.png" class="screenshot" /></a></li>
@@ -213,31 +205,19 @@
 <section class="part">
   <h2 id="setup-create-a-gsa-spreadsheet">3. SETUP: Create a GSA spreadsheet</h2>
 
-  <p>In this section, you will create a special Google spreadsheet to which your NodeJS server will be able to write data. To do this, you will need to create a spreadsheet via the <code class="highlighter-rouge">cs193x-sheets</code> command-line tool, distributed on <code class="highlighter-rouge">npm</code>.</p>
+  <p>In this section, you will create a special Google spreadsheet to which your NodeJS server will be able to write data. To do this, you will need to create a spreadsheet via the <code class="highlighter-rouge">hw5-tools</code> command-line tool, distributed on <code class="highlighter-rouge">npm</code>.</p>
 
-  <h3 class="no_toc" id="install-cs193x-sheets">1. Install <code class="highlighter-rouge">cs193x-sheets</code></h3>
+  <h3 class="no_toc" id="install-cs193x-sheets">1. Install <code class="highlighter-rouge">hw5-tools</code></h3>
 
   <ul>
-    <li>In your terminal, navigate to the directory that contains the HW5 starter code you downloaded from GitHub.
-      <ul>
-        <li>If you need help working a terminal, <a href="../install-node">see guide here</a>
-<a href="images/hw5-starter-directory.png"><img src="images/hw5-starter-directory.png" class="screenshot" /></a></li>
-      </ul>
-    </li>
-    <li>Run <code class="highlighter-rouge">npm install -g cs193x-sheets</code> to install the cs193x-sheets command-line tool.
-      <ul>
-        <li>You may need to use <code class="highlighter-rouge">sudo</code>.</li>
-        <li>You will use this command-line tool to create spreadsheets that your NodeJS server can write to.
-<a href="images/hw5-install-sheets-tool.png"><img src="images/hw5-install-sheets-tool.png" class="screenshot" /></a>
-<a href="images/hw5-sheets-tool-installed.png"><img src="images/hw5-sheets-tool-installed.png" class="screenshot" /></a></li>
-      </ul>
-    </li>
+    <li>Goto <a href="https://github.com/fullstackccu/hw5-tools.git">https://github.com/fullstackccu/hw5-tools.git</a> and following the install instruction.</li>
+    
   </ul>
 
-  <h3 class="no_toc" id="run-cs193x-sheets">2. Run <code class="highlighter-rouge">cs193x-sheets</code></h3>
+  <h3 class="no_toc" id="run-cs193x-sheets">2. Run <code class="highlighter-rouge">hw5-tools</code></h3>
 
   <ul>
-    <li>Now run the <code class="highlighter-rouge">cs193x-sheets</code> command:
+    <li>Now run the <code class="highlighter-rouge">hw5-tools</code> command:
 <a href="images/hw5-sheets-prompt.png"><img src="images/hw5-sheets-prompt.png" class="screenshot" /></a></li>
     <li>Type “c” to create a new spreadsheet and enter the following:
       <ul>
@@ -256,8 +236,6 @@
   <p><strong>NOTES:</strong></p>
 
   <p>Technically the spreadsheet you just created is owned by your Google Service Account, and not your public Gmail account, which is why you need to use the command-line tool to create and manage the spreadsheet. You cannot access Google Service Account documents via Google’s web interface.</p>
-
-  <p>Also, you must always run <code class="highlighter-rouge">cs193x-sheets</code> in the same directory as <code class="highlighter-rouge">privateSettings.json</code>, so that it can access your Google Service Account credentials.</p>
 
   <h3 class="no_toc" id="open-your-spreadsheet-and-fill-with-some-fake-data">3. Open your spreadsheet and fill with some fake data</h3>
 
@@ -401,16 +379,13 @@
     </tbody>
   </table>
 
-  <p><strong>Bugs?</strong></p>
-  <ul>
-    <li>If you believe there is a bug in the <code class="highlighter-rouge">gsa-sheets</code> library, post to Piazza.</li>
-  </ul>
+  
 
 </section>
 
 <section class="part">
 
-  <h2 id="clarification-spreadsheet-columns">[5/30] CLARIFICATION: Spreadsheet Columns</h2>
+  <h2 id="clarification-spreadsheet-columns">Notes: Spreadsheet Columns</h2>
 
   <p>In the examples below, we use a spreadsheet with an “email” and a “name” column.</p>
 
@@ -424,12 +399,6 @@
   <p>Here’s an example of another valid spreadsheet:</p>
 
   <p><a href="images/hw5-another-valid-spreadsheet.png"><img src="images/hw5-another-valid-spreadsheet.png" class="screenshot" /></a></p>
-
-  <p>Because of this late clarification, we are extending the deadline for HW5 for one day, but the late cut-off remains the same:</p>
-  <ul>
-    <li>Deadline: 5/31 at 11:59pm</li>
-    <li>Late cutoff: 6/1 at 11:59pm</li>
-  </ul>
 
 </section>
 
@@ -694,44 +663,7 @@
 
 </section>
 
-<section class="part">
 
-  <h2 id="submit">Submit</h2>
-
-  <p>Upload your completed homework to your GitHub repository. However, this time <strong>you do not have to publish your page on GitHub</strong>, as this is a server and not a client-side web page.</p>
-
-  <p>Instead, please follow the instructions below to deploy your app to <a href="http://heroku.com">Heroku</a>.</p>
-
-  <h3 class="no_toc" id="deploy-to-heroku">Deploy to Heroku</h3>
-
-  <ul>
-    <li>Create a <a href="https://signup.heroku.com">free Heroku account</a>, if you don’t have one already</li>
-    <li>Once your account is created and verified, you can deploy your app by visiting the following link (of course, replace <code class="highlighter-rouge">&lt;YOUR-REPOSITORY-NAME&gt;</code> with the name of your repository, such as <code class="highlighter-rouge">hw5-sheets-mygithubname</code>):
-      <ul>
-        <li><code class="highlighter-rouge">https://heroku.com/deploy?template=https://github.com/yayinternet/&lt;YOUR-REPOSITORY-NAME&gt;</code></li>
-      </ul>
-    </li>
-    <li>When the page loads, click the purple “Deploy” button.</li>
-    <li>When the deployment finishes, you should see “Your app was successfully deployed.” Click the “View” button.
-      <ul>
-        <li>This will take you to your deployed app, which will look like <code class="highlighter-rouge">http://some-autogenerated-name.herokuapp.com</code></li>
-      </ul>
-    </li>
-  </ul>
-
-  <p><strong>Trouble with deploying</strong></p>
-  <ul>
-    <li>If your deployment isn’t working, feel free to post to Piazza or come to office hours.</li>
-    <li>If you really can’t get it working, turn in your homework anyway; we are not requiring you to deploy to Heroku. However, deploying your app to Heroku will greatly help our TAs when grading, so please try your best to get it working.</li>
-  </ul>
-
-  <h3 class="no_toc" id="turn-in-homework">Turn in homework</h3>
-  <p>Turn in the link to your GitHub repository and Heroku app here:</p>
-  <ul>
-    <li><a href="https://goo.gl/forms/LuTWdK9S3510x5ys1">Submission Form</a></li>
-  </ul>
-
-</section>
 
 </article>
 
