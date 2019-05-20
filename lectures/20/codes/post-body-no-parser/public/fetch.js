@@ -7,8 +7,8 @@ function onResponse(response) {
 }
 
 const message = {
-  name: 'Victoria',
-  email: 'vrk@stanford.edu'
+  name: 'fullstackccu',
+  email: 'ccufullstack@gmail.com'
 };
 const fetchOptions = {
   method: 'POST',
