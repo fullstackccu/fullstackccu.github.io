@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html>
+ 
+
+
+<head>
+  <meta charset="utf-8">
+  <title>CS193X: Web Programming Fundamentals</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata:400,700|Space+Mono:400,700|Open+Sans:400,700">
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="stylesheet" href="../css/syntax.css"/>
+  <script src="https://use.fontawesome.com/c63611dac2.js"></script>
+  <script src="../js/script.js" defer="true"></script>
+</head>
+
+  <body>
+    <div id="container" class="full">
+      <section class="head">
+        <nav>
+          <ul>
+            <li>
+              <a href="../homework" class="nav">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                Back
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <header>
+          
+          <h1>Final Project</h1>
+        </header>
+      </section>
+      <section class="main">
+        <section>
+          <article>
+  
+<p>For the final project, you will be creating a web app using the key technologies
+we have practiced throughout the quarter. Instead of giving you a specific web app to replicate, you are given the freedom to choose what you’d like to make.</p>
+
+<p>We are giving you some restrictions on what you can make, such as a list of technical and style requirements. If you do not have any ideas for a web app you’d like to make, we’ve also provided a Diary project idea that you may use. If you choose to create the Diary app, it will be graded in the same way the other final projects are graded.</p>
+
+<p>Like the homework assignments, the final project is individual and you may not work in pairs or groups.</p>
+
+<p>Unlike the homework assignments, the final project <strong>cannot be turned in late.</strong></p>
+
+<p><span class="label">Proposal Due Date:</span> Fri, June 2, 2017 at 11:59pm (NO late submissions)<br />
+<span class="label">Proposal Turn-in:</span> <a href="https://goo.gl/forms/THqiW6CaWlGBb7mB3">Submission Form</a><br />
+<span class="label">Final Project Due Date:</span> Mon, June 12, 2017 at 11:59pm (NO late submissions)<br />
+<span class="label">Final Project Turn-in:</span> <a href="https://goo.gl/forms/MSmOhy958VFALuAH3">Submission Form</a></p>
+
+<hr />
+
+<ul id="markdown-toc">
+  <li><a href="#project-requirements" id="markdown-toc-project-requirements">Project requirements</a>    <ul>
+      <li><a href="#extra-credit" id="markdown-toc-extra-credit">Extra credit</a></li>
+      <li><a href="#contest" id="markdown-toc-contest">Contest</a></li>
+    </ul>
+  </li>
+  <li><a href="#project-ideas" id="markdown-toc-project-ideas">Project ideas</a>    <ul>
+      <li><a href="#project-idea-diary" id="markdown-toc-project-idea-diary">Project idea: Diary</a></li>
+    </ul>
+  </li>
+  <li><a href="#project-proposal" id="markdown-toc-project-proposal">Project Proposal</a></li>
+  <li><a href="#implementation-milestones" id="markdown-toc-implementation-milestones">Implementation milestones</a>    <ul>
+      <li><a href="#milestone-1-implement-the-frontend-ui-with-minimal-to-no-css" id="markdown-toc-milestone-1-implement-the-frontend-ui-with-minimal-to-no-css">Milestone 1: Implement the frontend UI with minimal-to-no CSS</a></li>
+      <li><a href="#milestone-2-design-your-database" id="markdown-toc-milestone-2-design-your-database">Milestone 2: Design your database</a></li>
+      <li><a href="#milestone-3-implement-the-backend" id="markdown-toc-milestone-3-implement-the-backend">Milestone 3: Implement the backend</a></li>
+      <li><a href="#milestone-4-finish-your-css" id="markdown-toc-milestone-4-finish-your-css">Milestone 4: Finish your CSS</a></li>
+      <li><a href="#milestone-5-deploy-and-test" id="markdown-toc-milestone-5-deploy-and-test">Milestone 5: Deploy and test</a></li>
+    </ul>
+  </li>
+  <li><a href="#help-and-hints" id="markdown-toc-help-and-hints">Help and Hints</a>    <ul>
+      <li><a href="#helpful-web-app-examples" id="markdown-toc-helpful-web-app-examples">Helpful web app examples</a></li>
+      <li><a href="#diary-app" id="markdown-toc-diary-app">Diary app</a></li>
+    </ul>
+  </li>
+  <li><a href="#deploy-to-heroku--mlab" id="markdown-toc-deploy-to-heroku--mlab">Deploy to Heroku + mLab</a>    <ul>
+      <li><a href="#troubleshooting" id="markdown-toc-troubleshooting">Troubleshooting</a></li>
+    </ul>
+  </li>
+  <li><a href="#submit" id="markdown-toc-submit">Submit</a>    <ul>
+      <li><a href="#june-2-project-proposal" id="markdown-toc-june-2-project-proposal">June 2: Project Proposal</a></li>
+      <li><a href="#june-12-final-project" id="markdown-toc-june-12-final-project">June 12: Final Project</a></li>
+    </ul>
+  </li>
+</ul>
+
+<section class="part">
+  <h2 id="project-requirements">Project requirements</h2>
+
+  <p>The final project is mostly open-ended, with some specific requirements as outlined in this section.</p>
+
+  <p>Overall, you can receive full credit on the final project if:</p>
+  <ul>
+    <li>Your project meets the Logistical, Technical, and Style requirements listed below.</li>
+    <li>You successfully deploy your site to Heroku.</li>
+    <li>You turn in the completed Project Proposal on-time (by June 2).</li>
+    <li>You turn in your completed Final Project on-time (by June 12).</li>
+  </ul>
+
+  <h3 class="no_toc" id="logistical-requirements">0. Logistical requirements</h3>
+  <ul>
+    <li>This is an individual assignment; you may not work in pairs or groups.</li>
+    <li>There are two deadlines for the final project:
+      <ul>
+        <li><strong>Fri, June 2 @ 11:59pm:</strong> Project Proposal is due</li>
+        <li><strong>Mon, June 12 @ 11:59pm:</strong> Final Project is due</li>
+      </ul>
+    </li>
+    <li>NO late submissions will be accepted for either deadline.</li>
+  </ul>
+
+  <h3 class="no_toc" id="technology-requirements">1. Technology requirements</h3>
+
+  <p>In your final project, you <strong>must</strong> include the following technologies:</p>
+
+  <p><strong>Frontend: HTML/CSS</strong></p>
+  <ul>
+    <li>Use classes and ids</li>
+    <li>Use <code class="highlighter-rouge">display: flex;</code></li>
+    <li>Include a CSS animation or transition</li>
+    <li>Change 2+ default font properties</li>
+    <li>Change 2+ box model properties (border, padding, margin)</li>
+  </ul>
+
+  <p><strong>Frontend: JavaScript</strong></p>
+  <ul>
+    <li>Write object-oriented JavaScript
+      <ul>
+        <li>Include 2+ ES6 classes</li>
+        <li>Use at least one callback or Custom Event to communicate between classes</li>
+      </ul>
+    </li>
+    <li>Listen for 2+ events
+      <ul>
+        <li>Can be the same event type, like 2 <code class="highlighter-rouge">click</code> events</li>
+      </ul>
+    </li>
+    <li>Use <code class="highlighter-rouge">fetch()</code> to talk to your backend</li>
+  </ul>
+
+  <p><strong>Backend</strong></p>
+  <ul>
+    <li>Use Node and ExpressJS</li>
+    <li>Save persistent data in some way using <strong>either</strong> MongoDB or a Google spreadsheet
+      <ul>
+        <li>We encourage you to use a MongoDB backend, but you may use a Google spreadsheet if that is a better fit for your project.</li>
+      </ul>
+    </li>
+    <li>Include at least 1 GET route</li>
+    <li>Include at least 1 POST route, and it should include a message body</li>
+    <li>Optional but recommended: include at least one route parameter</li>
+  </ul>
+
+  <p><strong>Misc</strong></p>
+  <ul>
+    <li>Use <code class="highlighter-rouge">async / await</code> properly somewhere in your project.
+      <ul>
+        <li>This can be in the frontend, backend, or both.</li>
+      </ul>
+    </li>
+    <li>You need to incorporate all these technologies into one cohesive web app.
+      <ul>
+        <li>We will <strong>not</strong> be grading on things like how interesting your project idea is, how original your idea is, how “realistic” it is, etc.</li>
+        <li>However, your project also can’t be a set of totally nonsensical code that happens to hit our checklist of technologies. Your project should be a web app, even if it’s a very small web app, or a silly web app, or a dumb web app.</li>
+      </ul>
+    </li>
+    <li>Your project should be relatively bug-free.
+      <ul>
+        <li>It’s hard for us to judge whether you are using the technology correctly if your code is very buggy.</li>
+        <li>We will not deduct points for trivial bugs or polish bugs, but we will deduct points for things like if the one CSS animation you included in your project is not actually working.</li>
+        <li>This is another reason why you should <strong>aim small</strong> in your project scope.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="style-requirements">2. Style requirements</h3>
+
+  <p>These style requirements should be no surprise, as we’ve enforced them all quarter.</p>
+
+  <p><strong>HTML/CSS:</strong></p>
+  <ul>
+    <li>Use tags semantically, e.g. don’t use <code class="highlighter-rouge">&lt;div&gt;</code> for every single element on your page.</li>
+    <li>No deprecated tags.</li>
+    <li>Use descendent selectors to reduce redundancy in CSS and HTML</li>
+    <li>You must write raw HTML and CSS, as we have done all quarter.
+      <ul>
+        <li>i.e. don’t use SASS or compiled CSS/HTML</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>JavaScript:</strong></p>
+  <ul>
+    <li>Must write object-oriented JavaScript.</li>
+    <li>Must use ES6 classes.</li>
+    <li>Avoid global variables.
+      <ul>
+        <li>OK to use globals for constants, instantiating classes, or other reasonable scenarios</li>
+        <li>But you should not put anything in a global variable that could be better encapsulated in a class</li>
+      </ul>
+    </li>
+    <li>Add/remove/toggle classes from <code class="highlighter-rouge">classList</code> instead of modifying <code class="highlighter-rouge">style</code> directly, unless you have to modify <code class="highlighter-rouge">style</code> directly (e.g. if you are calculating the value of a CSS property in JavaScript)</li>
+    <li>Communicate between classes using callbacks or custom events.</li>
+    <li>You must write raw JavaScript, as we have done all quarter.
+      <ul>
+        <li>You <strong>may not</strong> use jQuery.</li>
+        <li>You <strong>may not</strong> use any frontend frameworks, such as React, Angular ect.</li>
+        <li>You <em>may</em> use a library like the <a href="https://github.com/jsantell/dancer.js/">dancer.js</a> library used in HW4.</li>
+        <li>You <em>may</em> query a 3rd party library such as the Giphy library used in HW4.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Backend:</strong></p>
+  <ul>
+    <li>Your backend must be written using the Node and Express libraries</li>
+    <li>Don’t save data to the filesystem: persistent data should be stored in a MongoDB or a Google Spreadsheet.</li>
+    <li>HTTP methods should be used in ways that are compatible with the method definition. For example:
+      <ul>
+        <li>Use GET for retrieving data. Do not write data in a GET handler.</li>
+        <li>Use POST for saving data. Do not use POST to display a page.
+          <ul>
+            <li>Don’t use query parameters with POST</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="publishing-your-site">3. Publishing your site</h3>
+
+  <p><strong>Deploying:</strong></p>
+  <ul>
+    <li>You must successfully deploy your website on Heroku for turn-in.</li>
+    <li>If you use a MongoDB backend:
+      <ul>
+        <li>You must use the mLab Heroku add-on. See the instructions at the bottom of the spec.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Browsers:</strong></p>
+  <ul>
+    <li>You must verify your site works on the latest version of Chrome.</li>
+    <li>You do <strong>not</strong> have to make your site work on any other browser but the latest version of Chrome.</li>
+  </ul>
+
+  <h3 id="extra-credit">Extra credit</h3>
+
+  <p>The following features are extra credit:</p>
+  <ul>
+    <li>Support user login using OAuth 2</li>
+    <li>Mobile version</li>
+    <li>Accessible website</li>
+  </ul>
+
+  <h3 class="no_toc" id="things-we-are-not-grading">Things we are NOT grading</h3>
+
+  <p>We will NOT grade you on:</p>
+  <ul>
+    <li>The aesthetics of your web app</li>
+    <li>Whether your web app is an interesting app idea</li>
+    <li>Whether your web app is a creative app idea</li>
+    <li>The technical difficulty of creating your web app
+      <ul>
+        <li>We <strong>strongly</strong> recommend you build something small and simple, roughly on par with the scope of the homework assignments.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p>While we are not grading you on the above aspects of your project, some of these things will be considered for the contest described below.</p>
+
+  <hr />
+
+  <h3 id="contest">Contest</h3>
+
+  <p>We will be running a small contest for the final project submissions. The course staff will be selecting winners for the following categories:</p>
+
+  <ul>
+    <li><strong>Most beautiful:</strong> Given to the most aesthetically pleasing final project</li>
+    <li><strong>Best code:</strong> Given to the final project with exceptionally well-written code</li>
+    <li><strong>Most fun:</strong> Given to a really fun final project</li>
+    <li><strong>Best in show:</strong> Given to the all-round most impressive final project</li>
+  </ul>
+
+  <p><strong>If your final project is a contest winner, we will drop your lowest homework score.</strong> We will also award you with a small prize.</p>
+
+</section>
+
+<section class="part">
+  <h2 id="project-ideas">Project ideas</h2>
+
+  <p>You need to decide what web app you will build for the final project. Here are some suggested guidelines for you to follow when deciding what you want to build:</p>
+
+  <p><strong>Small and simple.</strong></p>
+  <ul>
+    <li>You only have a little over 2 weeks for this project, and programmers tend to grossly underestimate how difficult a task is / how long something will take to implement. Try to choose something very focused and simple for the subject of your final project.</li>
+    <li>Choose something that feels similar in size and difficulty to one of the previous assignments in this class, or the Diary app described at the end of this section.</li>
+  </ul>
+
+  <p><strong>No more than 3-5 different pages/screen in the entire app.</strong></p>
+  <ul>
+    <li>For example:
+      <ul>
+        <li>HW2: Quiz was 1 screen (the quiz)</li>
+        <li>HW3: Flashcards was 3 screens (menu, flashcards, results)</li>
+        <li>HW4: Music Box was 2 screens (menu, visualizer)</li>
+      </ul>
+    </li>
+    <li>We recommend you have <strong>only 1 to 3 screens</strong> in your web app, 5 at the absolute max.</li>
+    <li>If your project involves more than 5 screens, it is probably too big in scope for the final project.</li>
+  </ul>
+
+  <p><strong>Use previous HWs as your litmus test for scope and difficulty.</strong></p>
+  <ul>
+    <li>For example, if it took you 20+ hours to finish HW3, then you probably want to make something simpler than HW3. HW3 only involved writing JavaScript and did not include a backend or CSS, which you need to include on the final project.</li>
+  </ul>
+
+  <p><strong>If in doubt, build the Diary app.</strong></p>
+  <ul>
+    <li>We’ve included below a project idea that fulfills the final project requirements: Diary.</li>
+    <li>We will not grade the Diary app any differently than any other final project.</li>
+    <li>If you are having trouble coming up with an appropriate final project idea, build the Diary app.</li>
+  </ul>
+
+  <hr />
+
+  <h3 id="project-idea-diary">Project idea: Diary</h3>
+
+  <p>If you do not want to come up with your own project idea, implement the Diary app described below. This fits all the technology requirements for the final project.</p>
+
+  <p><strong>FYI: You can simplify the Diary app.</strong></p>
+
+  <p><a href="https://piazza.com/class/j0y7gmnuoh167p?cid=218">See Piazza post</a>. So long as the Diary app fits within the <a href="#project-requirements">project requirements</a>,</p>
+
+  <p><strong>Notes:</strong></p>
+  <ul>
+    <li>We will not grade the Diary app any differently than any other final project, i.e. you will not be penalized for choosing to implement the Diary app instead of original project idea.</li>
+    <li>You do not have to make your Diary app look or behave exactly the way we’ve specified below.
+      <ul>
+        <li>Feel free to change the appearance, behavior, etc.</li>
+        <li>Of course, if you deviate from the Diary app described below, you need to make sure it still covers the technical requirements outlined at the beginning of the spec.</li>
+      </ul>
+    </li>
+    <li>The Diary app is not as thoroughly specified as previous homework assignments. This is intentional, since the final project is much more open-ended than previous assignments. If there is ambiguity in how the Diary app should behave, you can interpret in whatever way you choose. We will not be grading against how closely you followed our Diary spec.</li>
+  </ul>
+
+  <h3 class="no_toc" id="diary-behavior">Diary behavior</h3>
+
+  <p>The Diary app is a web site that provides a way to make a simple, login-less journal. Every new journal has a unique URL that is viewable and editable by anyone with the link.</p>
+
+  <p><strong>Home Screen: Creating a new journal</strong></p>
+  <ul>
+    <li>When you go to the home page of your Diary app, you are presented with a button to create a new journal:
+<img src="images/diary-create.png" class="screenshot" /></li>
+    <li>When you press “Create a new journal”:
+      <ul>
+        <li>Your app should create a new journal on the backend</li>
+        <li>The browser should navigate to <code class="highlighter-rouge">/id/&lt;journal id&gt;</code>, where <strong>journal_id</strong> is a unique id generated on the server. This is the permanent URL for the diary.
+          <ul>
+            <li>You can set <code class="highlighter-rouge">window.location.href = &lt;URL&gt;</code> to make the browser navigate to a URL.</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Diary Screen: Display today’s journal</strong></p>
+  <ul>
+    <li>Navigating to <code class="highlighter-rouge">/id/&lt;journal id&gt;</code> should display today’s journal entry for the journal identified by <code class="highlighter-rouge">&lt;journal_id&gt;</code>. When you first create a journal, the entry will be empty.
+<img src="images/diary-created.png" class="screenshot" /></li>
+    <li>Today’s date is shown at the top of the screen, as is a journaling prompt for that day.
+      <ul>
+        <li><strong>HINT:</strong> You will want to use the <code class="highlighter-rouge">Date</code> class and <code class="highlighter-rouge">toLocaleDateString</code>. See <a href="#diary-app">Hints</a> for help and example usage.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Diary Screen: Update a journal entry</strong></p>
+  <ul>
+    <li>When you click on the space under the journal, you should be able to edit the diary entry.
+<img src="images/diary-edit.png" class="screenshot" /></li>
+    <li>The entry should be saved when you click anywhere outside of the textarea, including the check box. This should also make the edit UI go away. (<a href="videos/diary-edit.mp4">VIDEO</a>)
+<img src="images/diary-after-edit.png" class="screenshot" /></li>
+  </ul>
+
+  <p><strong>Diary Screen: Navigating between entries</strong></p>
+  <ul>
+    <li>At the bottom of the Diary Screen, there is a left and a right arrow. Click either arrow to go to the previous or the next day.
+      <video src="videos/diary-nav.mp4" controls="" autoplay="" loop="" class="screenshot"></video>
+    </li>
+    <li>There is a different unique diary prompt for each unique day of the month.</li>
+    <li>All days that you navigate to are editable. (<a href="videos/diary-nav-edit.mp4">VIDEO</a>)</li>
+    <li>Clicking “Home” takes you back to the entry for today’s date.</li>
+  </ul>
+
+  <p><strong>Persistent data</strong></p>
+  <ul>
+    <li>The diary data should persist between reloads and server restarts
+      <ul>
+        <li>I.e. data should be stored in and loaded from a MongoDB backend or a Google Spreadsheet.</li>
+        <li><strong>HINT:</strong> The <a href="#diary-app">Hints</a> section has some suggestions on how to structure your MongoDB database.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 class="no_toc" id="diary-style-and-assets">Diary style and assets</h3>
+
+  <p>We are not going to spec out the diary app as specifically as previous homework assignments, since we are not grading you on how closely you followed our specification.</p>
+
+  <p><strong>Text properties:</strong></p>
+  <ul>
+    <li>Large heading: Date and “Create a Daily Journal” text:
+      <ul>
+        <li>Font face: Merriweather from <a href="https://fonts.google.com/specimen/Merriweather">Google Fonts</a></li>
+        <li>Size: 30pt</li>
+      </ul>
+    </li>
+    <li>Small text: Subtitle, Button text
+      <ul>
+        <li>Font face: Montserrat from <a href="https://fonts.google.com/specimen/Montserrat">Google Fonts</a></li>
+        <li>Size: 12pt</li>
+      </ul>
+    </li>
+    <li>Diary entry text
+      <ul>
+        <li>Font face: Merriweather from <a href="https://fonts.google.com/specimen/Merriweather">Google Fonts</a></li>
+        <li>Size: 14pt</li>
+        <li>Line height: 1.5em</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>“Create a new journal” button</strong></p>
+  <ul>
+    <li>Border is 2px wide and black in color</li>
+    <li>20px of top-and-bottom space between the text and the border; 50px of left-and-right space between the text and the border</li>
+    <li>Hovering over the button changes the button’s font color to white and the background color of the button to black. The color transitions from white to black in 0.25 seconds.</li>
+  </ul>
+
+  <p><strong>Background colors</strong></p>
+  <ul>
+    <li>Page background is <code class="highlighter-rouge">#fdf5f5</code></li>
+    <li>Textarea background color is white, with 50% opacity</li>
+    <li>Footer background is white</li>
+  </ul>
+
+  <p><strong>Assets</strong></p>
+  <ul>
+    <li>Images
+      <ul>
+        <li><a href="diary-assets/back.png">back.png</a></li>
+        <li><a href="diary-assets/forward.png">forward.png</a></li>
+        <li><a href="diary-assets/checked.png">checked.png</a></li>
+      </ul>
+    </li>
+    <li>Journal prompts
+      <ul>
+        <li><a href="diary-assets/prompts.txt">prompts.txt</a></li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="project-proposal">Project Proposal</h2>
+
+  <p>The Project Proposal is <strong>due June 2 at 11:59pm</strong>. It will be graded on completion.</p>
+
+  <h3 class="no_toc" id="decide-on-a-project-idea">1. Decide on a project idea</h3>
+
+  <p>Read the <a href="#Project-ideas">project ideas</a> section of this spec and come up with an idea for your final project.</p>
+
+  <p>On the turn-in form, you will be asked to write a 1-2 paragraph description of your project idea.</p>
+  <ul>
+    <li>This doesn’t have to be too long or descriptive, and it doesn’t have to be a “pitch”; we just want to get a sense of what you want to make.</li>
+    <li>If you are planning to make the Diary app, you can say so in a few words and you don’t need to write a paragraph. Please elaborate if there’s anything you plan on changing, though.</li>
+    <li>We may reach out to you if we think your project is too difficult or otherwise inappropriate for the final project.</li>
+  </ul>
+
+  <h3 class="no_toc" id="accept-the-final-project-assignment">2. Accept the Final Project assignment</h3>
+
+  <p>Choose whether you want to have a MongoDB or a Google Spreadsheet backend, then accept the appropriate assignment below:</p>
+
+  <p><strong>Choose One:</strong></p>
+  <ul>
+    <li><a href="https://classroom.github.com/assignment-invitations/c777c12c53ff638e81f117fece8a92fa">Starter code for MongoDB backend</a> (RECOMMENDED)</li>
+    <li><a href="https://classroom.github.com/assignment-invitations/50b31e4fce4ef57dbdeee3fb7bc5d016">Starter code for Google Spreadsheet backend</a></li>
+  </ul>
+
+  <h3 class="no_toc" id="deploy-the-starter-code-to-heroku-for-practice">3. Deploy the starter code to Heroku for practice</h3>
+
+  <p>Unlike HW5, you are <strong>required</strong> to deploy your final project to <a href="http://heroku.com">Heroku</a>. Practice doing so now so that we can work out any issues before the final project deadline.</p>
+
+  <ul>
+    <li><a href="#deploy-to-heroku--mlab">Instructions to deploy to Heroku</a></li>
+  </ul>
+
+  <h3 class="no_toc" id="submit-your-project-proposal-and-heroku-link">4. Submit your project proposal and Heroku link</h3>
+
+  <p>When you are ready, submit your project proposal below:</p>
+
+  <ul>
+    <li><a href="https://goo.gl/forms/THqiW6CaWlGBb7mB3">Submit your Project Proposal</a></li>
+  </ul>
+
+</section>
+
+<section class="part">
+  <h2 id="implementation-milestones">Implementation milestones</h2>
+
+  <p>After you’ve turned in your Project Proposal, you are now ready to begin implementation!</p>
+
+  <p>We suggest the following milestones for your project:</p>
+
+  <h3 id="milestone-1-implement-the-frontend-ui-with-minimal-to-no-css">Milestone 1: Implement the frontend UI with minimal-to-no CSS</h3>
+
+  <p><strong>Create a class diagram for your frontend JavaScript</strong></p>
+  <ul>
+    <li>Before you begin any coding, write a class diagram for your frontend</li>
+    <li>Suggestions:
+      <ul>
+        <li>Create an <code class="highlighter-rouge">App</code> class, similar to the <code class="highlighter-rouge">App</code> class in HW3 and HW4.</li>
+        <li>Make a new class for every screen in your app, similar to how that was done in HW3 and HW4.</li>
+        <li>Make a new class for every non-trivial UI element, similar to the <code class="highlighter-rouge">Flashcard</code> in HW3 or the <code class="highlighter-rouge">PlayButton</code> in HW4.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Implement one screen at a time, without CSS</strong></p>
+  <ul>
+    <li>Write the HTML and JavaScript necessary to implement the behavior of one of the screens in your app. Implement one screen at a time. After each screen works individually, implement the interactions between the screens.</li>
+    <li>Don’t write your CSS yet, or at least don’t spend too much time on CSS. You can make your web app prettier after you’ve gotten your web app working end-to-end.</li>
+  </ul>
+
+  <p><strong>Use fake data instead of <code class="highlighter-rouge">fetch()</code></strong></p>
+  <ul>
+    <li>In the areas where you are supposed to call <code class="highlighter-rouge">fetch()</code>, fake out the data that you could get from the <code class="highlighter-rouge">fetch()</code> call. You can fake the data by creating a hard-coded JavaScript object literal and using that as if you had retrieved that data from <code class="highlighter-rouge">fetch()</code>.</li>
+  </ul>
+
+  <h3 id="milestone-2-design-your-database">Milestone 2: Design your database</h3>
+
+  <p><strong>Decide how you are going to store your data</strong></p>
+  <ul>
+    <li>If you are using a MongoDB backend (recommended):
+      <ul>
+        <li>What collection(s) are you going to have?</li>
+        <li>What fields are you going to store in each object?</li>
+      </ul>
+    </li>
+    <li>If you are using a Spreadsheet backend:
+      <ul>
+        <li>What columns are you going to have?</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Write a non-server NodeJS test script to query your database</strong></p>
+  <ul>
+    <li>Before you touch your NodeJS server code, write a separate NodeJS script that queries and updates your database. This way you can make sure you know how to make the right calls to MongoDB, independent of your frontend or server code.
+      <ul>
+        <li>Example: <a href="https://github.com/yayinternet/mongodb-examples/tree/master/mongodb-scripts">MongoDB scripts</a></li>
+      </ul>
+    </li>
+    <li>This is just a test script, and it will not be directly connected to your project code in any way.</li>
+  </ul>
+
+  <h3 id="milestone-3-implement-the-backend">Milestone 3: Implement the backend</h3>
+
+  <p><strong>Move your frontend code to <code class="highlighter-rouge">public/</code></strong></p>
+  <ul>
+    <li>Move the frontend code you wrote to the <code class="highlighter-rouge">public/</code> directory of your backend, if it’s not there already</li>
+    <li>Verify the frontend code is served statically from <code class="highlighter-rouge">public</code> when you run your NodeJS server</li>
+  </ul>
+
+  <p><strong>Write “stubs” for your routes without involving data yet</strong></p>
+  <ul>
+    <li>Write stubs for all of your GET and POST handler(s), where you only do the following:
+      <ul>
+        <li>Specify the path for the route</li>
+        <li>Print out the parameters received</li>
+      </ul>
+    </li>
+    <li>Don’t query/update your database or spreadsheet yet</li>
+  </ul>
+
+  <p><strong>Connect your frontend to your backend</strong></p>
+  <ul>
+    <li>Modify your frontend code to query your server via <code class="highlighter-rouge">fetch()</code> with the appropriate parameters</li>
+    <li>Make sure the backend prints the correct parameters when queried from the frontend.
+      <ul>
+        <li>Use <code class="highlighter-rouge">console.log()</code> statements on both the frontend and backend to debug</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Implement your routes</strong></p>
+  <ul>
+    <li>Now implement the rest of your stubbed routes, querying or updating your database or spreadsheet as necessary.</li>
+  </ul>
+
+  <h3 id="milestone-4-finish-your-css">Milestone 4: Finish your CSS</h3>
+
+  <ul>
+    <li>After your website is working end-to-end, finish styling your frontend with CSS.</li>
+  </ul>
+
+  <h3 id="milestone-5-deploy-and-test">Milestone 5: Deploy and test</h3>
+
+  <ul>
+    <li>Re-deploy your website onto Heroku.</li>
+    <li>Test out your deployed app to make sure it still works as expected.</li>
+    <li>Go through the <a href="#project-requirements">Project Requirements</a> and make sure your app fulfills all the ones we’ve asked for.</li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="help-and-hints">Help and Hints</h2>
+
+  <h3 id="helpful-web-app-examples">Helpful web app examples</h3>
+
+  <p>Here are links to the some of the full-stack examples we’ve coded and discussed in class:</p>
+
+  <ul>
+    <li><strong>Example app: Dictionary</strong>
+      <ul>
+        <li><a href="https://github.com/yayinternet/mongodb-examples/tree/master/dictionary-server-side">Dictionary lookup: server-side rendering</a>: Uses <code class="highlighter-rouge">fetch</code> GET to do dictionary search.
+          <ul>
+            <li>(Note: The frontend is not written in object-oriented (OO) style, which is <strong>not OK</strong> for the final project)</li>
+            <li>Uses Handlebars template with placeholders</li>
+            <li>Note: You need to pre-populate your database with dictionary values in order to for lookup to work. You can do this by using the <code class="highlighter-rouge">mongo</code> command line or writing your own script. An example general-purpose MongoDB script: <a href="https://github.com/yayinternet/mongodb-examples/tree/master/mongodb-scripts">mongodb-scripts</a></li>
+          </ul>
+        </li>
+        <li><a href="https://github.com/yayinternet/mongodb-examples/tree/master/dictionary-spa">Dictionary lookup: single-page-application</a>: Same as above, but written as a single-page-application, and and OO-style frontend.</li>
+        <li><a href="https://github.com/yayinternet/mongodb-examples/tree/master/dictionary-with-mongodb">Dictionary lookup and set value</a>: Look up a word and change its value. Uses <code class="highlighter-rouge">fetch</code> GET and POST and Route parameters.
+          <ul>
+            <li>(Note: The frontend is not written in object-oriented (OO) style, which is <strong>not OK</strong> for the final project)</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><strong>Example app: E-card</strong>
+      <ul>
+        <li><a href="https://github.com/yayinternet/mongodb-examples/tree/master/ecard-server-side">E-card with server-side rendering</a>: Uses <code class="highlighter-rouge">fetch</code> GET and POST on the client side. Saves to a single collection.
+          <ul>
+            <li>Uses Handlebars template with placeholders</li>
+          </ul>
+        </li>
+        <li><a href="https://github.com/yayinternet/mongodb-examples/tree/master/ecard-spa">E-card as a single-page-application</a>: Same as the above example, but written as a single-page-application</li>
+      </ul>
+    </li>
+    <li><strong>Example app: Cross-stitch</strong> (pixel drawing app)
+      <ul>
+        <li><a href="https://github.com/yayinternet/cross-stitch-examples/blob/master/README.md#cross-stitch-one-hoop">One global hoop</a>: Uses <code class="highlighter-rouge">fetch</code> GET and POST on the client side. Saves a single entry to a single collection.
+          <ul>
+            <li>Client-side is written in OO-style</li>
+          </ul>
+        </li>
+        <li><a href="https://github.com/yayinternet/cross-stitch-examples#cross-stitch-one-user">Multiple hoops</a>: Evolution of the previous example.
+          <ul>
+            <li>Saves multiple entries to a single collection.</li>
+            <li>Shows querying by <code class="highlighter-rouge">ObjectID</code></li>
+            <li>Shows managing multiple screens: Menu screen and Edit screen</li>
+            <li>Uses a route parameter for <code class="highlighter-rouge">lookup/:id</code></li>
+            <li>Uses <code class="highlighter-rouge">Router</code> to split up <code class="highlighter-rouge">server.js</code> into multiple files</li>
+          </ul>
+        </li>
+        <li><a href="https://github.com/yayinternet/cross-stitch-examples#cross-stitch-user-login">Multiple users</a>: Evolution of the previous 2 examples.
+          <ul>
+            <li>Shows saving data in multiple collections: <code class="highlighter-rouge">users</code> and <code class="highlighter-rouge">hoops</code></li>
+            <li>Shows an application-level join: <code class="highlighter-rouge">onLoadAllHoops</code> finds the user’s MongoDB <code class="highlighter-rouge">_id</code> by searching <code class="highlighter-rouge">users</code> collection by email, then gets all documents from <code class="highlighter-rouge">hoops</code> that matches the <code class="highlighter-rouge">_id</code></li>
+            <li>Show OAuth2 authentication with Google: Login and Logout</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <h3 id="diary-app">Diary app</h3>
+
+  <p>Here are some specific tips for anyone coding the Diary app:</p>
+
+  <ul>
+    <li><strong><code class="highlighter-rouge">Date</code> class</strong>
+      <ul>
+        <li>You will need to use JavaScript’s <code class="highlighter-rouge">Date</code> class to get today’s date as well as other dates.</li>
+        <li><a href="https://codepen.io/bee-arcade/pen/4bf971103039e17af944b620e88aacf6?editors=0011"><code class="highlighter-rouge">Date</code> examples</a>: Please check this out! This shows printing a date, advancing a date, stringifying a date</li>
+        <li>Use <a href="https://codepen.io/bee-arcade/pen/4bf971103039e17af944b620e88aacf6?editors=0011"><code class="highlighter-rouge">toLocaleDateString</code></a> to create a string date like “June 2” (<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString">mdn</a>)</li>
+      </ul>
+    </li>
+    <li><strong>Data Model</strong>
+      <ul>
+        <li>You can think of your Diary app as having two main “entities”:
+          <ul>
+            <li><strong>Diaries:</strong> A diary has a unique id and is a collection of entries</li>
+            <li><strong>Entries:</strong> An diary entry contains the text content of the entry, and a date (Month / Day / Year, not time) belonging to the entry.</li>
+          </ul>
+        </li>
+        <li>To model this entity, consider the following structure:
+          <ul>
+            <li>Create a “diaries” MongoDB collection, which contains one document per diary</li>
+            <li>Create an “entries” MongoDB collection, which contains one document per entry
+              <ul>
+                <li>Each entry has a “diaryID” field, which maps back to the diary it belongs to</li>
+                <li>Each entry has a “date” field, but instead of storing it as an actual <code class="highlighter-rouge">Date</code> type, we recommend you store the date as a string like <code class="highlighter-rouge">"6/3/2017"</code>. See <a href="https://codepen.io/bee-arcade/pen/4bf971103039e17af944b620e88aacf6?editors=0011">example</a> for how to generate a string like that from a <code class="highlighter-rouge">Date</code> object</li>
+                <li>Each entry also contains the “contents” of the entry</li>
+              </ul>
+            </li>
+            <li>You don’t have to model your data this way, but it should make querying your data simpler.</li>
+          </ul>
+        </li>
+        <li>Don’t forget <code class="highlighter-rouge">ObjectID</code> when querying for MongoDB ids
+          <ul>
+            <li>See <a href="http://web.stanford.edu/class/cs193x/lectures/24/lecture24.pdf">Lecture 24</a> and the Cross-stitch / E-card examples</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+<section class="part">
+
+  <h2 id="deploy-to-heroku--mlab">Deploy to Heroku + mLab</h2>
+
+  <p>Here are instructions for deploying to <a href="http://heroku.com">Heroku</a>. Unlike in HW5, successfully deploying your final project to Heroku is <strong>required</strong>.</p>
+
+  <h3 class="no_toc" id="prepare-for-deployment">1. Prepare for deployment</h3>
+
+  <p><strong>Make sure your dependencies are up to date</strong></p>
+
+  <p>Heroku will install the dependencies defined in <code class="highlighter-rouge">package.json</code>, so you need to make sure that they include all the libraries that you are using.</p>
+
+  <ol>
+    <li>Navigate to the root directory of your project. If you run <code class="highlighter-rouge">ls</code>, you should see the <code class="highlighter-rouge">node_modules</code> directory.</li>
+    <li>Remove the <code class="highlighter-rouge">node_modules</code> directory.
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rm -rf node_modules
+</code></pre>
+      </div>
+    </li>
+    <li>Run <code class="highlighter-rouge">npm install</code>
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install
+</code></pre>
+      </div>
+    </li>
+    <li>Run <code class="highlighter-rouge">npm start</code>
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm start
+</code></pre>
+      </div>
+    </li>
+  </ol>
+
+  <p>If you have any errors, fix them before continuing.</p>
+
+  <p><strong>(Mongo-only) Test with an empty database</strong></p>
+
+  <p>When you deploy to Heroku and set up mLab, the live MongoDB database will be completely empty. You should make sure your web app still works with an empty database.</p>
+
+  <ol>
+    <li>Make sure <code class="highlighter-rouge">mongod</code> is running and in a separate terminal, run <code class="highlighter-rouge">mongo</code>
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>mongo
+</code></pre>
+      </div>
+    </li>
+    <li>Switch to the database your server is using. (Change <strong>DATABASE_NAME</strong> to whatever name you’ve given your database.)
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>use DATABASE_NAME
+</code></pre>
+      </div>
+    </li>
+    <li>Delete the database
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>db.dropDatabase<span class="o">()</span>
+</code></pre>
+      </div>
+    </li>
+    <li>Run your server with <code class="highlighter-rouge">npm run</code> and test your web app.</li>
+  </ol>
+
+  <p>If you have any errors, fix them before continuing.</p>
+
+  <p><strong>Upload everything to GitHub</strong></p>
+
+  <p>Before you deploy to Heroku, make sure you have uploaded all files to GitHub. Heroku uses the files on GitHub to know what to deploy, so it must be up to date.</p>
+
+  <h3 class="no_toc" id="deploy">2. Deploy</h3>
+
+  <p><strong>Note: If you are using a MongoDB database, you need to do a few extra steps.</strong> Please make sure to follow the extra steps below.</p>
+
+  <ol>
+    <li>Create a <a href="https://signup.heroku.com">free Heroku account</a>, if you don’t have one already</li>
+    <li>Once your account is created and verified, you can deploy your app by visiting the following link (of course, replace <code class="highlighter-rouge">&lt;YOUR-REPOSITORY-NAME&gt;</code> with the name of your repository):
+      <ul>
+        <li><code class="highlighter-rouge">https://heroku.com/deploy?template=https://github.com/yayinternet/&lt;YOUR-REPOSITORY-NAME&gt;</code></li>
+      </ul>
+    </li>
+    <li>When the page loads, click the purple “Deploy” button.
+  <img src="images/heroku-deploy.png" class="screenshot" /></li>
+    <li>When the deployment finishes, you should see “Your app was successfully deployed.”
+  <img src="images/heroku-deployed.png" class="screenshot" /></li>
+  </ol>
+
+  <p><strong>If you have a Google Spreadsheet backend:</strong></p>
+  <ul>
+    <li>You’re done! Click “View”</li>
+    <li>This will take you to your deployed app, which will look like <code class="highlighter-rouge">http://some-autogenerated-name.herokuapp.com</code></li>
+  </ul>
+
+  <p><strong>If you have a MongoDB backend:</strong></p>
+  <ul>
+    <li>You will need to set up an mLab database. <a href="http://mlab.com">mLab</a> provides hosting for MongoDB databases, and luckily, there is easy integration with Heroku.
+      <ul>
+        <li><strong>NOTE:</strong> You may have to enter in a credit card number, but you will not be charged for anything. If this makes you uncomfortable, use the Spreadsheet backend.</li>
+      </ul>
+    </li>
+    <li>Click “Manage App” and continue the instructions below.</li>
+  </ul>
+
+  <ol>
+    <li><em>(Mongo-only)</em>: Click on the “Resources” tab.
+  <img src="images/heroku-resources.png" class="screenshot" /></li>
+    <li><em>(Mongo-only)</em>: Under “Add-ons”, search for “mLab”. When the option appears, click on it.
+  <img src="images/heroku-mlab-option.png" class="screenshot" /></li>
+    <li><em>(Mongo-only)</em>: A dialog box will pop up when you click on the mLab option. Click “Provision”
+  <img src="images/heroku-mlab-provision.png" class="screenshot" /></li>
+    <li><em>(Mongo-only)</em>: Now your web app and database should be set up! Click “Open App” in the upper-right corner.
+  <img src="images/heroku-open-app.png" class="screenshot" /></li>
+  </ol>
+
+  <h3 id="troubleshooting">Troubleshooting</h3>
+
+  <p>If you have problems with your Heroku deploy, try the following:</p>
+
+  <p><strong>1. Make sure you have followed the <a href="#prepare-for-deployment">Prepare for Deployment</a> steps</strong></p>
+
+  <p>If you’ve followed all the <a href="#prepare-for-deployment">preparation steps</a> and your deployement still doesn’t work,</p>
+
+  <p><strong>2. Look at your Heroku logs</strong></p>
+
+  <p>To do this:</p>
+  <ul>
+    <li>Install the <a href="https://devcenter.heroku.com/articles/heroku-cli#download-and-install">Heroku command-line tool</a></li>
+    <li>In your terminal, run:
+      <div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>heroku logs --app &lt;app-name&gt;
+</code></pre>
+      </div>
+      <p>where <app-name> is the autogenerated name like mysterious-bunnies-23422 (or the custom name, if you specified one)</app-name></p>
+    </li>
+  </ul>
+
+  <p>Read the logs to see what the error is. Fix your code and deploy again.</p>
+
+  <p>If you still can’t get your Heroku deployment to work,</p>
+
+  <p><strong>3. Post to <a href="http://piazza.com/stanford/spring2017/cs193x">Piazza</a> with your Heroku logs</strong></p>
+
+  <p>Include a copy of your Heroku error logs, as obtained in the previous step</p>
+
+</section>
+
+<section class="part">
+  <h2 id="submit">Submit</h2>
+
+  <p>Submit the two project deliverables using the links below:</p>
+
+  <h3 id="june-2-project-proposal">June 2: Project Proposal</h3>
+  <p>See <a href="#project-proposal">Project Proposal</a> for details. Submission form below.</p>
+  <ul>
+    <li><a href="https://goo.gl/forms/THqiW6CaWlGBb7mB3">Submit form</a></li>
+  </ul>
+
+  <h3 id="june-12-final-project">June 12: Final Project</h3>
+  <p>You will turn in the following artifacts for your final project:</p>
+  <ul>
+    <li>A link to your final project GitHub repository</li>
+    <li>A link to your deployed, working Heroku app</li>
+    <li>A brief description of the app you created and the features you’ve made</li>
+    <li><strong>A video walkthrough of your final project.</strong> See details below.</li>
+  </ul>
+
+  <p>Submission form:</p>
+  <ul>
+    <li><a href="https://goo.gl/forms/MSmOhy958VFALuAH3">Submit form</a></li>
+  </ul>
+
+  <hr />
+
+  <p><strong>Video walkthrough</strong></p>
+  <ul>
+    <li>We will <em>not</em> be grading your video, other than for completion. We just want to understand how we should use your app.</li>
+    <li>Required even if you do the Diary app</li>
+    <li><strong>Contents of the video</strong>
+      <ul>
+        <li>The video should be a screencast of your final project. Show the features that you’ve implemented in the video.</li>
+        <li>NO need for voiceover / polish / fancy transitions / etc: You will not be graded on this.</li>
+        <li>Upload your video to YouTube or Google Drive and make sure you give Read-permission to everyone with the link</li>
+      </ul>
+    </li>
+    <li>If you absolutely cannot make a video, you can make a Google Doc with screenshots instead.
+      <ul>
+        <li>Make sure you give Read-permission to everyone with the link</li>
+      </ul>
+    </li>
+  </ul>
+
+  <p><strong>Creating a video</strong></p>
+  <ul>
+    <li>Here are some tutorials on how to create screen captures:
+      <ul>
+        <li><a href="http://etc.usf.edu/techease/4all/getting-started/creating-screen-recordings-with-quicktime-player/#html">Mac (quicktime)</a></li>
+        <li><a href="http://www.pcmag.com/news/349410/how-to-capture-video-clips-in-windows-10">Windows 10 built-in</a></li>
+        <li><a href="https://icecreamapps.com/Screen-Recorder">Screen Recorder</a> and <a href="https://icecreamapps.com/Howto/how-to-create-a-video-guide.html">tutorial</a></li>
+        <li>If you can’t get any of the above to work, you can also just use your phone to record your screen</li>
+      </ul>
+    </li>
+    <li>Uploading to Google Drive (or youtube, etc)
+      <ul>
+        <li>Upload your video someplace we can see it.</li>
+        <li><a href="https://support.google.com/drive/answer/2424368?co=GENIE.Platform%3DDesktop&amp;hl=en&amp;oco=2">Google Drive Upload</a> and <a href="https://support.google.com/drive/answer/2494822?co=GENIE.Platform%3DDesktop&amp;hl=en">Share</a></li>
+      </ul>
+    </li>
+    <li>If you absolutely cannot make a video, you can make a Google Doc with screenshots instead.
+      <ul>
+        <li>Make sure you give Read-permission to everyone with the link</li>
+      </ul>
+    </li>
+  </ul>
+
+</section>
+
+</article>
+
+        </section>
+       
+      </section>
+    </div>
+  </body>
+</html>
