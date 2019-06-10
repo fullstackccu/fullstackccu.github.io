@@ -2,7 +2,7 @@
 // You should create your own client ID via these instructions:
 // https://developers.google.com/identity/sign-in/web/devconsole-project
 // ***This client ID should be yours , so pleasecreate your own!!!***
-const CLIENT_ID = '779951118654-9fc4i79pl2qqqet6cs25tbq2ng1dkrip.apps.googleusercontent.com';
+const CLIENT_ID = 'xxxxxxxxxx-oooooooooo.apps.googleusercontent.com';
 
 class LoginUtils {
   static async getSignedInUser() {
